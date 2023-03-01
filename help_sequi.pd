@@ -1,0 +1,59 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_sequi 20 20 0 24 -128992
+-262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 113 rr_density;
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X msg 30 323 next \$1;
+#X obj 30 178 t b b;
+#X obj 30 368 /~ 4;
+#X obj 30 345 clone 6 rr_tone~ 2000 2;
+#X obj 30 391 rr_echo~ e1 500 0.15;
+#X obj 141 418 *~ 0.25;
+#X msg 75 253 3 7 4;
+#X obj 57 201 rr_cycle1 0 16 4 1 55;
+#X text 309 264 Sequi needs one argument that defines modulo (ex. 12
+for tet). Put a list/sequence of intervels you want to have as outlet
+in 2nd inlet.;
+#X text 308 130 Cycle1 (as circle) needs five arguments: 1st for clone
+\; 2nd is for how many bangs in to have a bang out (a counter) \; 3rd
+is for interval to repeat on every cycle \; 4rt in how many octaves
+\; 5th is root tone to begin.;
+#X text 308 226 Polyri needs two arguments (better not two odds numbers).
+It bangs out results of mix., f 58;
+#X obj 30 226 rr_polyri 2 9;
+#X obj 30 276 rr_sequi 12;
+#X obj 30 299 + 55, f 5;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 12 0;
+#X connect 11 0 14 0;
+#X connect 12 0 22 0;
+#X connect 12 1 18 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 15 0 2 0;
+#X connect 15 0 2 1;
+#X connect 15 1 16 0;
+#X connect 16 0 2 1;
+#X connect 17 0 23 1;
+#X connect 18 0 24 1;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 11 0;

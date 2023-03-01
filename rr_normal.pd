@@ -1,0 +1,19 @@
+#N canvas 558 146 685 554 10;
+#X obj 62 17 inlet;
+#X obj 62 172 abs;
+#X obj 62 241 outlet;
+#X obj 62 149 expr ((($f1-0)*$f2)/(1-0));
+#X floatatom 215 82 5 0 0 1 range - -;
+#X obj 215 64 nbx 4 14 -1e+37 1e+37 0 0 empty empty IN 50 8 0 10 -228856
+-1 -1 0.61 256;
+#X obj 215 103 nbx 3 14 -1e+37 1e+37 0 0 empty empty OUT 45 8 0 10
+-1 -262144 -1 24.4 256;
+#X obj 62 195 i;
+#X connect 0 0 3 0;
+#X connect 0 0 5 0;
+#X connect 1 0 7 0;
+#X connect 3 0 1 0;
+#X connect 4 0 3 1;
+#X connect 7 0 6 0;
+#X connect 7 0 2 0;
+#X coords 0 -1 1 1 75 90 1 208 35;

@@ -1,0 +1,49 @@
+#N canvas 367 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_shifter 20 20 0 24 -128992
+-262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 481 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset., f 58;
+#X obj 30 113 rr_density;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 431 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 419 305 Perc~ needs attributes: 1st for cloning \; 2nd for
+tone (in Hz) \; 3rd for release \; 4th for decay type \; 5th amp of
+tone (< 0.5) \; 6th amp of noise (< 0.5) \; 7th is lpf \; 8th is hpf.
+;
+#X obj 30 413 rr_echo~ e1 25 0.1, f 19;
+#X obj 40 330 rr_perc~ 0 250 90 4 0.25 0.5 6000 3000;
+#X obj 57 355 rr_perc~ 0 750 120 5 0.25 0.15 6000 4000;
+#X obj 69 379 rr_perc~ 0 1500 90 6 0.25 0.35 3000 2000;
+#X obj 30 209 rr_shifter 200 1000;
+#X obj 57 234 rr_shifter 250 2500;
+#X obj 30 178 t b b;
+#X obj 30 306 rr_perc~ 0 90 150 3 0.35 0.05 500 50;
+#X text 309 214 Shifter needs two arguments: 1st is delay ms every
+bang and 2nd is total delay then it returns.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 17 0;
+#X connect 11 0 2 0;
+#X connect 11 0 2 1;
+#X connect 11 1 2 1;
+#X connect 12 0 11 0;
+#X connect 13 0 11 0;
+#X connect 14 0 11 0;
+#X connect 15 0 18 0;
+#X connect 15 1 12 0;
+#X connect 16 0 13 0;
+#X connect 16 1 14 0;
+#X connect 17 0 15 0;
+#X connect 17 1 16 0;
+#X connect 18 0 11 0;

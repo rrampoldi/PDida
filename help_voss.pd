@@ -1,0 +1,53 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_voss 20 20 0 24 -128992
+-262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 324 rr_allscales;
+#X obj 29 387 rr_echo~ e1 500, f 19;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 390 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence.;
+#X text 309 440 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 113 rr_density;
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X obj 30 348 rr_tone~ 0 100 2;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X obj 30 180 rr_voss;
+#X obj 139 182 normal;
+#X obj 139 277 + 50;
+#X text 308 154 Voss needs you [get] how many elements in your sequence
+\, then [run] and values appear in array (you can do it any times you
+want while it plays. Change [seed] for different sequence. Output is
+in range 0-1.;
+#X text 308 214 Normalize input from 0-1 referenced to range you define
+and show in [OUT]. May be you need to add a constant.;
+#X msg 147 308 0 2 3 5 7 9 10;
+#X text 309 279 Put in 2nd inlet a progressive series (list) of intervals
+which represents the elements of the scale to use (mod 12). [minor
+scale in example];
+#X obj 29 409 rr_echo~ e2 300, f 17;
+#X connect 2 0 5 0;
+#X connect 2 1 5 1;
+#X connect 3 0 12 0;
+#X connect 4 0 21 0;
+#X connect 4 1 2 1;
+#X connect 4 1 21 1;
+#X connect 6 0 5 2;
+#X connect 10 0 14 0;
+#X connect 12 0 4 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 3 0;
+#X connect 19 0 3 1;
+#X connect 21 0 2 0;
+#X connect 21 1 2 0;
+#X connect 21 1 2 1;

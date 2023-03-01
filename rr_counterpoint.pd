@@ -1,0 +1,16 @@
+#N canvas 101 194 385 552 10;
+#X obj 63 266 t f f, f 6;
+#X obj 63 114 t f b, f 27;
+#X obj 222 143 f 60;
+#X obj 63 74 inlet;
+#X obj 63 309 outlet;
+#X obj 63 168 expr if($f1==$f2 || $f1==$f2-5 || $f1==$f2-7 || $f1==$f2+4
+|| $f1==$f2-3 \, $f2 \, if($f2-$f1>5 || $f1-$f2>5 \, $f1-3 \, $f1+4))
+, f 27;
+#X connect 0 0 4 0;
+#X connect 0 1 2 1;
+#X connect 1 0 5 0;
+#X connect 1 1 2 0;
+#X connect 2 0 5 1;
+#X connect 3 0 1 0;
+#X connect 5 0 0 0;

@@ -1,0 +1,15 @@
+#N canvas 200 320 450 300 10;
+#X obj 21 15 inlet;
+#X obj 21 58 t f b;
+#X floatatom 48 127 5 0 0 0 - - -;
+#X obj 21 150 spigot;
+#X obj 48 81 random 6;
+#X obj 21 194 outlet;
+#X obj 48 104 > \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 4 0;
+#X connect 2 0 3 1;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 6 0 2 0;

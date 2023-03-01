@@ -1,0 +1,53 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_ostinato 20 20 0 24
+-128992 -262144 0;
+#X obj 29 448 rr_OUTdac~;
+#X obj 30 558 rr_record~;
+#X msg 193 532 rec01.wav;
+#X text 309 510 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset., f 56;
+#X obj 30 103 rr_density;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 400 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X obj 141 424 *~ 0.25;
+#X obj 30 378 /~ 3;
+#X msg 30 330 next \$1;
+#X obj 30 401 rr_echo~ e1 50 0.15;
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X msg 99 284 0 2 4 5 7 9 11;
+#X obj 30 353 clone 8 rr_tone~ 1000 3;
+#X obj 30 283 + 35;
+#X msg 105 195 0 2 0 1;
+#X text 309 194 Ostinato needs a argument \, how many beats an interval
+must change \; you can put this value in 2nd inlet too. 3rd inlet is
+a sequence/list of values (0-1 2) to repeat.;
+#X obj 30 218 rr_ostinato 4;
+#X obj 30 307 rr_allscales;
+#X text 309 284 In allscales: put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [major scale in example];
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 20 0;
+#X connect 10 0 2 1;
+#X connect 11 0 13 0;
+#X connect 12 0 16 0;
+#X connect 13 0 2 0;
+#X connect 13 0 2 1;
+#X connect 13 1 10 0;
+#X connect 15 0 21 1;
+#X connect 16 0 11 0;
+#X connect 17 0 21 0;
+#X connect 18 0 20 2;
+#X connect 20 0 17 0;
+#X connect 21 0 12 0;

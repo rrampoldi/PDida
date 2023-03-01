@@ -1,0 +1,65 @@
+#N canvas 219 317 690 394 10;
+#X obj 34 333 gemwin;
+#X obj 112 39 tgl 15 0 empty empty on -15 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 34 39 tgl 15 0 empty empty show 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 34 233 sel 0 1;
+#X msg 34 283 destroy;
+#X msg 247 233 draw line;
+#X msg 316 233 draw fill;
+#X msg 171 233 draw point;
+#X obj 271 52 gemhead;
+#X msg 109 233 draw tri;
+#X obj 271 180 rotateXYZ;
+#X obj 271 333 scopeXYZ~ 1024, f 30;
+#X obj 37 58 hsl 88 15 0 360 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 34 77 hradio 15 1 0 4 empty empty draw 0 22 0 10 -262144 -1
+-1 2;
+#X obj 109 204 route 0 1 2 3, f 44;
+#X msg 53 259 dimen 400 400 \, create \, 1;
+#X obj 330 289 inlet~;
+#X obj 388 288 inlet~;
+#X obj 448 287 inlet~;
+#X floatatom 305 147 5 0 0 0 - - -;
+#X floatatom 267 147 5 0 0 0 - - -;
+#X floatatom 344 147 5 0 0 0 - - -;
+#X obj 271 114 color 0 1 0;
+#X msg 351 114 1 1 1;
+#X msg 394 114 0 1 0;
+#X obj 97 77 hradio 15 1 0 2 empty empty w/G 0 22 0 10 -1 -262144 -1
+1;
+#X obj 351 90 route 0 1, f 15;
+#X connect 1 0 8 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 15 0;
+#X connect 4 0 0 0;
+#X connect 5 0 11 0;
+#X connect 6 0 11 0;
+#X connect 7 0 11 0;
+#X connect 8 0 22 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 12 0 20 0;
+#X connect 12 0 21 0;
+#X connect 13 0 14 0;
+#X connect 14 0 9 0;
+#X connect 14 1 7 0;
+#X connect 14 2 5 0;
+#X connect 14 3 6 0;
+#X connect 15 0 0 0;
+#X connect 16 0 11 1;
+#X connect 17 0 11 2;
+#X connect 18 0 11 3;
+#X connect 19 0 10 2;
+#X connect 20 0 10 1;
+#X connect 21 0 10 3;
+#X connect 22 0 10 0;
+#X connect 23 0 22 1;
+#X connect 24 0 22 1;
+#X connect 25 0 26 0;
+#X connect 26 0 23 0;
+#X connect 26 1 24 0;
+#X coords 0 -1 1 1 112 95 1 25 15;
