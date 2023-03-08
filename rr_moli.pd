@@ -20,6 +20,8 @@
 #X msg 81 232 get \$1 1;
 #X obj 81 121 del 50;
 #X obj 81 309 outlet;
+#X obj 358 34 r sync;
+#X msg 358 57 0;
 #X connect 0 0 12 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -46,3 +48,6 @@
 #X connect 17 0 18 0;
 #X connect 18 0 4 0;
 #X connect 19 0 9 0;
+#X connect 21 0 22 0;
+#X connect 22 0 9 1;
+#X connect 22 0 13 1;
