@@ -1,0 +1,65 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_melsina 20 20 0 24 -128992
+-262144 0;
+#X obj 29 422 rr_OUTdac~;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X obj 142 393 *~ 0.25;
+#X obj 30 302 allscales;
+#X obj 30 156 rr_dura2 7, f 14;
+#X floatatom 126 141 5 0 0 0 - - -;
+#X msg 115 286 0 2 3 5 7 9 10;
+#X text 309 309 In allscales put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X text 308 152 Dura2 returns bangs at different multiple times of
+inlet triggered bangs. It needs a argument: is how many bangs to repeat
+sequence \; 2nd inlet is for change random seed \; 2nd outlet returns
+time selected.;
+#X obj 30 113 rr_pulsa 4 1;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 109 178 * 125;
+#X obj 30 228 rr_melsina 7;
+#X obj 30 346 rr_beep~;
+#X obj 30 324 t b f, f 8;
+#X obj 30 92 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 30 280 + 40;
+#X obj 30 371 rr_echo~ e1 500 0.5;
+#X floatatom 126 213 5 0 0 0 - - -;
+#X text 309 366 In beep: 1st argument (2nd inlet) is duration \; 2nd
+argument (3rd inlet) is tone.;
+#X text 308 244 Melsina needs an argument for how long is the sequence
+\; 2nd inlet is for variations (try).;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 2 1;
+#X connect 8 0 2 0;
+#X connect 9 0 20 0;
+#X connect 10 0 18 0;
+#X connect 10 1 17 0;
+#X connect 11 0 10 1;
+#X connect 12 0 9 1;
+#X connect 15 0 10 0;
+#X connect 17 0 19 1;
+#X connect 18 0 22 0;
+#X connect 19 0 23 0;
+#X connect 20 0 19 0;
+#X connect 20 1 19 2;
+#X connect 21 0 15 0;
+#X connect 22 0 9 0;
+#X connect 23 0 2 0;
+#X connect 23 0 2 1;
+#X connect 23 1 8 0;
+#X connect 24 0 18 1;
