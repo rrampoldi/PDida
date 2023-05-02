@@ -1,0 +1,27 @@
+#N canvas 520 240 652 385 10;
+#X obj 102 143 random 100;
+#X obj 33 205 + 0;
+#X obj 102 166 expr if($f1<=$f2 \, 0 \, if($f1>$f2+(100-$f2)/2 \, -1
+\, 1));
+#X obj 411 136 f \$1;
+#X obj 33 120 t f b b, f 23;
+#X obj 102 189 t f f;
+#X obj 33 248 outlet;
+#X obj 129 248 outlet;
+#X obj 33 56 inlet;
+#X obj 432 56 inlet;
+#X obj 432 112 clip 0 100;
+#X obj 129 214 + 2;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 1 0;
+#X connect 4 1 0 0;
+#X connect 4 2 3 0;
+#X connect 5 0 1 1;
+#X connect 5 1 11 0;
+#X connect 8 0 4 0;
+#X connect 9 0 10 0;
+#X connect 10 0 3 1;
+#X connect 11 0 7 0;
