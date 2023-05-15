@@ -1,0 +1,73 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_interpola 20 20 0 24
+-128992 -262144 0;
+#X obj 29 422 rr_OUTdac~;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X floatatom 159 146 5 0 0 0 - - -;
+#X obj 142 393 *~ 0.15;
+#X text 308 172 Interpola needs 3 arguments that are the values to
+interpolate \; (order is important too) Put a number in 2nd inlet (0-100)
+to change interpolation points.;
+#X msg 30 325 next \$1;
+#X obj 30 108 rr_pulsa 8 1;
+#N canvas 6 116 450 250 (subpatch) 0;
+#X array array1 100 float 3;
+#A 0 0.57 0.68 0.75 0.67 0.41 0.74 0.73 0.54 0.69 0.75 0.65 0.61 0.75
+0.72 0.51 0.71 0.75 0.63 0.63 0.75 0.7 0.48 0.72 0.75 0.6 0.65 0.75
+0.69 0.45 0.73 0.74 0.58 0.67 0.76 0.67 0.42 0.74 0.73 0.55 0.69 0.75
+0.65 0.6 0.75 0.72 0.52 0.7 0.75 0.63 0.63 0.75 0.71 0.49 0.72 0.75
+0.61 0.65 0.75 0.69 0.46 0.73 0.74 0.59 0.67 0.75 0.68 0.43 0.74 0.73
+0.56 0.68 0.75 0.66 0.6 0.74 0.72 0.53 0.7 0.75 0.64 0.62 0.75 0.71
+0.51 0.71 0.75 0.62 0.64 0.75 0.7 0.47 0.72 0.74 0.6 0.66 0.75 0.68
+0.44 0.73 0.74;
+#X coords 0 1 100 0 100 70 1 0 0;
+#X restore 142 266 graph;
+#X obj 140 209 f 0;
+#X obj 165 209 + 1;
+#X obj 190 209 % 100;
+#X obj 102 209 t f b;
+#X obj 140 232 array set array1;
+#X obj 102 232 / 100;
+#X obj 30 173 rr_interpola 60 100 40;
+#X obj 30 371 rr_echo~ e1 500 0.15;
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 309 284 (<<< see array example);
+#X obj 30 348 clone 8 rr_tone~ 500 2;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 9 0 14 0;
+#X connect 10 0 22 4;
+#X connect 11 0 2 1;
+#X connect 11 0 2 0;
+#X connect 13 0 26 0;
+#X connect 14 0 22 0;
+#X connect 16 0 17 0;
+#X connect 16 0 20 1;
+#X connect 17 0 18 0;
+#X connect 18 0 16 1;
+#X connect 19 0 21 0;
+#X connect 19 1 16 0;
+#X connect 21 0 20 0;
+#X connect 22 0 13 0;
+#X connect 22 0 19 0;
+#X connect 23 0 2 0;
+#X connect 23 0 2 1;
+#X connect 23 1 11 0;
+#X connect 26 0 23 0;
