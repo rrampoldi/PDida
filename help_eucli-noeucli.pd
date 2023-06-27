@@ -1,0 +1,74 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_eucli/noeucli 20 20
+0 24 -128992 -262144 0;
+#X obj 29 422 rr_OUTdac~;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 519 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 465 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 142 393 *~ 0.15;
+#X msg 30 326 next \$1;
+#X msg 147 293 next \$1;
+#X obj 30 302 + 60;
+#X obj 207 87 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 207 107 s sync;
+#X obj 30 131 t b b, f 20;
+#X obj 147 182 rr_noeucli 7 3 3;
+#X obj 147 270 + 72;
+#X obj 30 371 rr_echo~ e1 50 0.25;
+#X obj 30 182 rr_eucli 8 3 0;
+#X text 308 144 Eucli needs 3 arguments (or inlet values): 1st is divided
+for 2nd and 3rd (0-1) is offset.;
+#X text 308 184 Noeucli needs 3 arguments (or inlet values): 1st is
+sequence length \; After 2nd bangs (offset) how many bangs is 3rd value.
+;
+#X text 308 245 Combine needs 2 arguments: 1st is entire group of numbers
+to divide \; 2nd in how many subgroups \; It returns some combinations.
+;
+#X text 446 311 With fm you can generate a frequency modulated sound
+\; 1st is carrier (0-127) \; 2nd is ratio for modulator (0-10) \; 3rd
+modulation index (0-20) \; 4th timbre (0-1) \; 5th mix (0-1) \; 6th
+attack in ms \; 7th release in ms \; 8th decay (1-8)., f 37;
+#X obj 30 108 rr_pulsa 7 2;
+#X obj 30 349 clone 4 rr_fm~ 0.5 1.25 0.75 0.9 15 2500 4;
+#X obj 147 316 clone 4 rr_fm~ 0.5 1.5 0.75 0.95 15 1500 3;
+#X obj 30 205 rr_combine 12 7;
+#X obj 147 205 rr_combine 12 7;
+#X msg 111 230 -15;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 9 0 25 0;
+#X connect 10 0 2 1;
+#X connect 10 0 2 0;
+#X connect 11 0 26 0;
+#X connect 12 0 27 0;
+#X connect 13 0 11 0;
+#X connect 14 0 15 0;
+#X connect 16 0 20 0;
+#X connect 16 1 17 0;
+#X connect 17 0 29 0;
+#X connect 18 0 12 0;
+#X connect 19 0 2 0;
+#X connect 19 0 2 1;
+#X connect 19 1 10 0;
+#X connect 20 0 28 0;
+#X connect 20 1 30 0;
+#X connect 25 0 16 0;
+#X connect 26 0 19 0;
+#X connect 27 0 19 0;
+#X connect 28 0 13 0;
+#X connect 29 0 18 0;
+#X connect 30 0 13 0;
