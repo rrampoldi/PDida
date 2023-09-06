@@ -1,0 +1,58 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_figure 20 20 0 24 -128992
+-262144 0;
+#X obj 29 418 rr_OUTdac~;
+#X obj 30 528 rr_record~;
+#X msg 193 502 rec01.wav;
+#X text 309 519 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 83 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X msg 30 305 next \$1;
+#X text 308 245 Combine needs 2 arguments: 1st is entire group of numbers
+to divide \; 2nd in how many subgroups \; It returns some combinations.
+;
+#X text 446 311 With fm you can generate a frequency modulated sound
+\; 1st is carrier (0-127) \; 2nd is ratio for modulator (0-10) \; 3rd
+modulation index (0-20) \; 4th timbre (0-1) \; 5th mix (0-1) \; 6th
+attack in ms \; 7th release in ms \; 8th decay (1-8)., f 37;
+#X obj 30 104 rr_pulsa 1 1;
+#X obj 142 389 rev1~;
+#X floatatom 181 389 5 0 0 0 - - -;
+#X obj 99 152 random 8;
+#X obj 99 129 rr_trga 4 0 1 1;
+#X obj 30 185 rr_figure 1000;
+#X floatatom 125 185 5 0 0 0 - - -;
+#X obj 30 281 + 50;
+#X obj 141 366 lop~ 500;
+#X obj 30 224 rr_combine 20 7;
+#X obj 30 328 clone 4 rr_fm~ 1 1 0.5 0.75 20 2000 4;
+#X text 308 164 Figure needs a value (0-7) in 2nd inlet to select a
+rhytmic figure to outlet (a regular pulse in 1st inlet). 3rd inlet
+is in ms is a value for a quarter for reference (you can define as
+an argument too).;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 12 0;
+#X connect 9 0 22 0;
+#X connect 12 0 17 0;
+#X connect 12 1 16 0;
+#X connect 13 0 2 1;
+#X connect 13 0 2 0;
+#X connect 14 0 13 1;
+#X connect 15 0 17 1;
+#X connect 16 0 15 0;
+#X connect 17 0 21 0;
+#X connect 18 0 17 2;
+#X connect 19 0 9 0;
+#X connect 20 0 13 0;
+#X connect 21 0 19 0;
+#X connect 22 0 2 0;
+#X connect 22 0 20 0;
