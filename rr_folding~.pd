@@ -1,0 +1,12 @@
+#N canvas 641 246 450 300 10;
+#X obj 35 85 expr~ if($v1>1 \, 2-$v1 \, $v1);
+#X obj 35 108 expr~ if($v1<-1 \, -2-$v1 \, $v1);
+#X obj 35 131 expr~ if($v1>1 \, 2-$v1 \, $v1);
+#X obj 35 154 expr~ if($v1<-1 \, -2-$v1 \, $v1);
+#X obj 35 26 inlet~;
+#X obj 35 227 outlet~;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
