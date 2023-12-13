@@ -1,0 +1,66 @@
+#N canvas 623 116 737 632 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_fm3/fm4 20 20 0 24 -128992
+-262144 0;
+#X obj 29 432 rr_OUTdac~;
+#X obj 30 542 rr_record~;
+#X msg 193 516 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 308 134 Choose how many elements in your sequence [num] then
+[set].You can click [set] again for a new sequence. You can bang in
+2nd inlet to [set]. 3rd inlet (2-6) how many repetitions of sequence
+to bang out in 2nd outlet.;
+#X obj 30 158 rr_play;
+#X obj 30 91 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 81 398 rev1~;
+#X floatatom 120 398 5 0 0 0 - - -;
+#X msg 30 247 next \$1;
+#X obj 81 375 lop~ 300;
+#X obj 30 111 rr_pulsa 3 1;
+#X obj 99 158 rr_play;
+#X msg 99 247 next \$1;
+#X obj 30 224 + 50;
+#X obj 30 280 clone 4 rr_fm3~ 2 4 150 150 500 6;
+#X obj 99 224 + 45;
+#X text 344 219 Fm3 needs 7 arguments: 1st for cloning \; 2nd is harmonic
+\; 3rd is amount \; 4th is attack \; 5th is sustain \; 6th is release
+\; 7th is curve type \;, f 53;
+#X obj 141 375 *~ 0.25;
+#X obj 30 375 *~ 0.5;
+#X text 344 329 Fm4 needs 8 arguments: 1st for cloning \; 2nd/3rd and
+4th to modulate with triangle wave \; 5th is attack \; 6th is sustain
+\; 7th is release \; 8th is curve type \;, f 53;
+#X obj 80 311 clone 4 rr_fm4~ 0.5 5 6 150 500 500 3;
+#X obj 128 127 rr_trga 8 0 1 1;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 18 0;
+#X connect 9 0 15 0;
+#X connect 11 0 2 1;
+#X connect 11 0 2 0;
+#X connect 12 0 11 1;
+#X connect 13 0 19 0;
+#X connect 14 0 11 0;
+#X connect 15 0 8 0;
+#X connect 15 1 16 0;
+#X connect 15 1 26 0;
+#X connect 16 0 20 0;
+#X connect 17 0 25 0;
+#X connect 18 0 13 0;
+#X connect 19 0 14 0;
+#X connect 19 0 23 0;
+#X connect 20 0 17 0;
+#X connect 22 0 2 1;
+#X connect 23 0 2 0;
+#X connect 25 0 14 0;
+#X connect 25 0 22 0;
+#X connect 26 0 16 1;
+#X connect 26 0 8 1;

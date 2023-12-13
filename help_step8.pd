@@ -1,0 +1,75 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_step8 20 20 0 24 -128992
+-262144 0;
+#X obj 29 423 rr_OUTdac~;
+#X obj 30 533 rr_record~;
+#X msg 193 507 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X msg 99 209 0 2 3 5 7 9 10;
+#X text 309 251 In allscales put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 93 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 85 364 lop~ 600;
+#X obj 85 387 rev1~;
+#X floatatom 123 387 5 0 0 0 - - -;
+#X msg 30 286 next \$1;
+#X obj 30 347 *~ 0.25;
+#X obj 30 263 rr_allscales;
+#X obj 30 114 rr_pulsa 3 1;
+#X obj 30 311 clone 8 rr_tone~ 150 3;
+#X floatatom 159 132 5 0 0 0 - - -;
+#X obj 158 425 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 445 s sync;
+#X obj 30 241 + 40;
+#X msg 177 284 next \$1;
+#X obj 177 347 *~ 0.25;
+#X obj 177 261 rr_allscales;
+#X floatatom 305 132 5 0 0 0 - - -;
+#X obj 177 239 + 33;
+#X floatatom 234 117 5 0 0 0 - - -;
+#X text 343 174 Step8 needs an argument (0-1) that is probability to
+return a value. A seed in 2nd inlet change step sequence., f 54;
+#X obj 177 309 clone 8 rr_tone~ 2000 3;
+#X obj 30 153 rr_step8 0.5;
+#X obj 176 153 rr_step8 0.25;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 16 1;
+#X connect 7 0 25 1;
+#X connect 10 0 17 0;
+#X connect 11 0 12 0;
+#X connect 12 0 2 0;
+#X connect 12 0 2 1;
+#X connect 13 0 12 1;
+#X connect 14 0 18 0;
+#X connect 15 0 2 0;
+#X connect 15 0 11 0;
+#X connect 16 0 14 0;
+#X connect 17 0 31 0;
+#X connect 17 1 32 0;
+#X connect 18 0 15 0;
+#X connect 19 0 31 1;
+#X connect 20 0 21 0;
+#X connect 22 0 16 0;
+#X connect 23 0 30 0;
+#X connect 24 0 2 1;
+#X connect 24 0 11 0;
+#X connect 25 0 23 0;
+#X connect 26 0 32 1;
+#X connect 27 0 25 0;
+#X connect 28 0 19 0;
+#X connect 28 0 26 0;
+#X connect 30 0 24 0;
+#X connect 31 0 22 0;
+#X connect 32 0 27 0;
