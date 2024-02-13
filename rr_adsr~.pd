@@ -15,6 +15,10 @@
 #X obj 54 221 pow~ 2;
 #X obj 54 63 t b b b b b b b, f 38;
 #X obj 279 87 f \$7;
+#X obj 150 28 inlet;
+#X obj 187 28 inlet;
+#X obj 226 28 inlet;
+#X obj 262 28 inlet;
 #X connect 1 0 14 0;
 #X connect 2 0 10 0;
 #X connect 3 0 10 1;
@@ -39,3 +43,7 @@
 #X connect 14 5 8 0;
 #X connect 14 6 15 0;
 #X connect 15 0 13 1;
+#X connect 16 0 4 1;
+#X connect 17 0 5 1;
+#X connect 18 0 7 1;
+#X connect 19 0 8 1;

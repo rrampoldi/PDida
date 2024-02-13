@@ -1,0 +1,68 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_tboard 20 20 0 24 -128992
+-262144 0;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 301 In allscales put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 29 459 rr_OUTdac~;
+#X obj 30 569 rr_record~;
+#X msg 193 543 rec01.wav;
+#X msg 111 309 0 2 3 5 7 9 10;
+#X obj 213 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 30 332 next \$1;
+#X obj 30 309 rr_allscales;
+#X obj 158 461 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 481 s sync;
+#X obj 213 107 rr_pulsa 4 1;
+#X obj 114 416 rev1~;
+#X floatatom 176 416 5 0 0 0 - - -;
+#X floatatom 176 393 5 0 0 0 - - -;
+#X floatatom 68 408 5 0 1 0 - - -;
+#X obj 29 431 mix 0.5;
+#X obj 30 376 *~ 0.25;
+#X obj 114 393 hip~ 1000;
+#X obj 30 282 + 0;
+#X obj 30 87 rr_tboard;
+#X obj 109 256 * 7;
+#X obj 30 354 clone 8 rr_tone~ 1000 4;
+#X obj 109 279 + 14;
+#X obj 188 258 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 308 154 Tboard returns positions of flagged toogles in 7 X
+7 grid \, x in 1st outlet \, y in 2nd outlet and a bang in 3rd outlet.
+Sequenced from left/right \, up/down \, right/left \, down/up.;
+#X connect 6 0 7 0;
+#X connect 6 1 7 1;
+#X connect 8 0 7 2;
+#X connect 9 0 12 1;
+#X connect 10 0 15 0;
+#X connect 11 0 26 0;
+#X connect 12 0 11 0;
+#X connect 13 0 14 0;
+#X connect 15 0 24 0;
+#X connect 16 0 20 1;
+#X connect 17 0 16 1;
+#X connect 18 0 22 1;
+#X connect 19 0 20 2;
+#X connect 20 0 6 0;
+#X connect 20 0 6 1;
+#X connect 21 0 20 0;
+#X connect 21 0 22 0;
+#X connect 22 0 16 0;
+#X connect 23 0 12 0;
+#X connect 24 0 23 0;
+#X connect 24 1 25 0;
+#X connect 24 2 28 0;
+#X connect 25 0 27 0;
+#X connect 26 0 21 0;
+#X connect 27 0 23 1;

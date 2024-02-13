@@ -1,0 +1,74 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_tools 20 20 0 24 -128992
+-262144 0;
+#X text 309 470 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 530 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 29 416 rr_OUTdac~;
+#X obj 30 526 rr_record~;
+#X msg 193 500 rec01.wav;
+#X msg 30 279 next \$1;
+#X obj 30 256 rr_allscales;
+#X obj 158 418 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 438 s sync;
+#X obj 114 363 rev1~;
+#X floatatom 176 363 5 0 0 0 - - -;
+#X floatatom 176 340 5 0 0 0 - - -;
+#X floatatom 68 355 5 0 1 0 - - -;
+#X obj 29 378 mix 0.5;
+#X obj 30 323 *~ 0.25;
+#X obj 114 340 hip~ 1000;
+#X obj 30 301 clone 8 rr_tone~ 1500 3;
+#X obj 30 101 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 141 100 5 0 0 0 - - -;
+#X obj 30 209 + 0;
+#X obj 30 147 t f b;
+#X obj 69 193 * 7;
+#X msg 99 233 0 2 3 5 7 8 10;
+#X obj 30 122 rr_sele 100 5 0 6 9;
+#X obj 69 147 rr_trga 1 0 1 3;
+#X obj 303 105 rr_board;
+#X obj 303 272 rr_show;
+#X msg 303 295;
+#X obj 303 318 rr_analyze;
+#X text 504 263 Show returns note name \;;
+#X text 504 103 Board returns note position on grid \;, f 29;
+#X text 534 313 Analyze returns waveform and spectrum \;, f 23;
+#X obj 30 232 + 10;
+#X obj 69 170 rr_count 5 1;
+#X connect 4 0 5 0;
+#X connect 4 1 5 1;
+#X connect 6 0 5 2;
+#X connect 7 0 18 0;
+#X connect 8 0 7 0;
+#X connect 8 0 27 0;
+#X connect 8 0 28 0;
+#X connect 9 0 10 0;
+#X connect 11 0 15 1;
+#X connect 12 0 11 1;
+#X connect 13 0 17 1;
+#X connect 14 0 15 2;
+#X connect 15 0 4 0;
+#X connect 15 0 4 1;
+#X connect 16 0 15 0;
+#X connect 16 0 17 0;
+#X connect 17 0 11 0;
+#X connect 18 0 16 0;
+#X connect 18 0 30 0;
+#X connect 19 0 25 0;
+#X connect 20 0 25 1;
+#X connect 21 0 34 0;
+#X connect 22 0 21 0;
+#X connect 22 1 26 0;
+#X connect 23 0 21 1;
+#X connect 24 0 8 1;
+#X connect 25 0 22 0;
+#X connect 26 0 35 0;
+#X connect 28 0 29 0;
+#X connect 34 0 8 0;
+#X connect 35 0 23 0;

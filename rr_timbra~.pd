@@ -1,0 +1,16 @@
+#N canvas 331 206 450 300 10;
+#X obj 36 146 expr~ atan2($v1 \, $f2);
+#X obj 36 48 inlet~;
+#X obj 36 225 outlet~;
+#X obj 159 99 f \$1;
+#X obj 159 48 inlet;
+#X obj 221 48 loadbang;
+#X obj 36 169 clip~ -1 1;
+#X obj 159 122 clip 0 1;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 3 0 7 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 2 0;
+#X connect 7 0 0 1;
