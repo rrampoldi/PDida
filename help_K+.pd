@@ -1,0 +1,63 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_K+~ 20 20 0 24 -128992
+-262144 0;
+#X obj 29 432 rr_OUTdac~;
+#X obj 30 542 rr_record~;
+#X msg 193 516 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 412 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 308 134 Choose how many elements in your sequence [num] then
+[set].You can click [set] again for a new sequence. You can bang in
+2nd inlet to [set]. 3rd inlet (2-6) how many repetitions of sequence
+to bang out in 2nd outlet.;
+#X obj 141 401 *~ 0.25;
+#X obj 30 153 rr_play;
+#X obj 30 91 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 188 91 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 188 111 s sync;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 111 rr_pulsa 3 1, f 21;
+#X obj 30 378 rr_echo~ e1 500 0.5;
+#X obj 95 248 rr_foury~;
+#X obj 153 137 rr_trga 12 0 1 1;
+#X text 308 274 Foury returns a random wave shape every bang in 2nd
+inlet.;
+#X obj 30 229 + 35;
+#X floatatom 95 227 5 0 0 0 - - -;
+#X obj 153 160 random 100;
+#X msg 30 294 next \$1;
+#X obj 30 328 clone 4 rr_K+~ 2;
+#X text 308 338 K+ needs 2 arguments: 1st for cloning and 2nd (0.25-8)
+from long/low to short/high sound. It needs some noise or signal in
+2nd inlet.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 9 0 2 1;
+#X connect 9 0 2 0;
+#X connect 10 0 20 0;
+#X connect 11 0 15 0;
+#X connect 12 0 13 0;
+#X connect 15 0 10 0;
+#X connect 15 1 18 0;
+#X connect 16 0 2 0;
+#X connect 16 0 2 1;
+#X connect 16 1 9 0;
+#X connect 17 0 24 1;
+#X connect 18 0 10 1;
+#X connect 18 0 22 0;
+#X connect 20 0 23 0;
+#X connect 21 0 17 0;
+#X connect 22 0 17 1;
+#X connect 23 0 24 0;
+#X connect 24 0 16 0;

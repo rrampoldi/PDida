@@ -1,0 +1,68 @@
+#N canvas 532 116 737 632 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_distortion~ 20 20 0
+24 -128992 -262144 0;
+#X obj 29 432 rr_OUTdac~;
+#X obj 30 542 rr_record~;
+#X msg 193 516 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 115 383 rev1~;
+#X floatatom 177 383 5 0 0 0 - - -;
+#X floatatom 177 360 5 0 0 0 - - -;
+#X floatatom 68 376 5 0 1 0 - - -;
+#X obj 30 343 *~ 0.25;
+#X obj 115 360 hip~ 1000;
+#X msg 30 274 next \$1;
+#X obj 29 398 rr_mix~ 0.5;
+#X obj 30 110 rr_pulsa 1 1;
+#X floatatom 30 186 5 0 0 0 - - -;
+#X msg 111 229 0 2 4 5 7 9 11;
+#X obj 30 252 t f b, f 19;
+#X obj 30 229 rr_allscales;
+#X obj 30 133 rr_selecta 7;
+#X obj 30 320 rr_distortion~ 3000;
+#X obj 30 207 + 30;
+#X obj 30 297 clone 18 rr_plucked~ 0.975 2500 25 1000 500;
+#X obj 30 156 rr_chrd+ -7 -3 0 10;
+#X obj 158 157 rr_chrd+ 2 4 8 10;
+#X text 308 334 Distortion needs an argument as duration in ms. A bang
+in 2nd inlet to start effect.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 17 0;
+#X connect 9 0 16 1;
+#X connect 10 0 9 1;
+#X connect 11 0 14 1;
+#X connect 12 0 16 2;
+#X connect 13 0 14 0;
+#X connect 13 0 16 0;
+#X connect 14 0 9 0;
+#X connect 15 0 25 0;
+#X connect 16 0 2 0;
+#X connect 16 0 2 1;
+#X connect 17 0 22 0;
+#X connect 18 0 24 0;
+#X connect 19 0 21 1;
+#X connect 20 0 15 0;
+#X connect 20 1 23 1;
+#X connect 21 0 20 0;
+#X connect 22 0 26 0;
+#X connect 23 0 13 0;
+#X connect 24 0 21 0;
+#X connect 25 0 23 0;
+#X connect 26 0 18 0;
+#X connect 26 1 18 0;
+#X connect 26 2 18 0;
+#X connect 26 3 27 0;
+#X connect 27 0 18 0;
+#X connect 27 1 18 0;
+#X connect 27 2 18 0;
