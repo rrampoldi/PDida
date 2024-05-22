@@ -1,0 +1,63 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_decimals/salta 20 20
+0 24 -128992 -262144 0;
+#X obj 30 525 rr_record~;
+#X msg 193 499 rec01.wav;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 85 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 142 366 rev1~;
+#X floatatom 180 366 5 0 0 0 - - -;
+#X floatatom 141 92 5 0 0 0 - - -;
+#X floatatom 204 343 5 0 0 0 - - -;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Stereo spatialization and volume sliders.;
+#X obj 30 326 *~ 0.25;
+#X obj 29 415 rr_XOUTdac~;
+#X obj 142 343 hip~ 1000;
+#X obj 192 123 s dur;
+#X text 308 94 Pulsa+ needs 3 arguments: 1st how many sec for pulse
+duration \; 2nd how many subdivision in pulse \; 3rd how many beats
+to repeat durations sequence. Put a value in 2nd inlet to generate
+new sequence. 1st outlet for bangs series and 2nd outlet for duration
+of every beat.;
+#X msg 30 280 next \$1;
+#X obj 30 107 rr_pulsa+ 1 2 3;
+#X floatatom 164 182 10 0 0 0 - - -;
+#X obj 166 123 * 4;
+#X obj 30 166 rr_decimals 13;
+#X obj 30 303 clone 8 rr_tone~ 0 2;
+#X obj 30 257 + 60;
+#X text 309 187 Decimals nedds an argument as a divisor and a value
+in 2nd inlet to divide. It returns division result with 10 decimals
+in sequence.;
+#X obj 30 219 rr_salta 7 12, f 19;
+#X text 309 247 Salta needs 2 arguments and a seed in 2nd inlet: 1st
+is length of random sequence than it repeats \; 2nd are jumps up or
+down in semitones.;
+#X connect 3 0 2 2;
+#X connect 5 0 17 0;
+#X connect 6 0 12 1;
+#X connect 7 0 6 1;
+#X connect 8 0 17 1;
+#X connect 8 0 20 1;
+#X connect 8 0 24 1;
+#X connect 9 0 13 1;
+#X connect 11 0 12 0;
+#X connect 11 0 13 0;
+#X connect 11 0 12 1;
+#X connect 12 0 2 0;
+#X connect 12 1 2 1;
+#X connect 13 0 6 0;
+#X connect 16 0 21 0;
+#X connect 17 0 20 0;
+#X connect 17 1 19 0;
+#X connect 19 0 14 0;
+#X connect 20 0 24 0;
+#X connect 20 1 18 0;
+#X connect 21 0 11 0;
+#X connect 22 0 16 0;
+#X connect 24 0 22 0;
