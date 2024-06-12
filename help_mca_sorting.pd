@@ -1,0 +1,58 @@
+#N canvas 517 125 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_mca/sorting 20 20 0
+24 -128992 -262144 0;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 92 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X floatatom 248 375 5 0 0 0 - - -;
+#X floatatom 205 367 5 0 0 0 - - -;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Stereo spatialization and volume sliders.;
+#X obj 30 350 *~ 0.25;
+#X obj 29 422 rr_XOUTdac~;
+#X obj 142 367 hip~ 1000;
+#X msg 30 304 next \$1;
+#X text 308 94 Pulsa needs 2 arguments: 1st how many pulses every 2nd
+argument seconds (in 2nd inlet too).;
+#X floatatom 30 258 5 0 0 0 - - -;
+#X floatatom 123 229 10 0 0 0 - - -;
+#X obj 30 327 clone 8 rr_tone~ 1500 3;
+#X obj 30 160 rr_mca 0.1234 20;
+#X obj 30 281 + 60;
+#X floatatom 30 183 5 0 0 0 - - -;
+#X text 309 187 Mca (montecarlo) needs 2 arguments: 1st (0.1-0.9999)
+is seed for random generation \; 2nd is max in range.;
+#X obj 30 213 rr_sorting;
+#X text 309 238 Sorting receives stops/starts sequence in 0/12 semitones
+or changes seed in tritone or sevenths.;
+#X obj 142 390 rr_rreva~;
+#X floatatom 206 396 5 0 0 0 - - -;
+#X obj 30 117 rr_pulsa 3 1;
+#X connect 3 0 2 2;
+#X connect 5 0 25 0;
+#X connect 6 0 23 1;
+#X connect 7 0 11 1;
+#X connect 9 0 10 0;
+#X connect 9 0 11 0;
+#X connect 9 0 10 1;
+#X connect 10 0 2 0;
+#X connect 10 1 2 1;
+#X connect 11 0 23 0;
+#X connect 12 0 16 0;
+#X connect 14 0 18 0;
+#X connect 15 0 17 1;
+#X connect 16 0 9 0;
+#X connect 17 0 19 0;
+#X connect 18 0 12 0;
+#X connect 19 0 21 0;
+#X connect 21 0 14 0;
+#X connect 21 1 15 0;
+#X connect 23 0 10 1;
+#X connect 23 0 10 0;
+#X connect 24 0 23 2;
+#X connect 25 0 17 0;
