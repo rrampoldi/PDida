@@ -1,0 +1,72 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_target 20 20 0 24 -128992
+-262144 0;
+#X obj 29 418 rr_OUTdac~;
+#X obj 30 528 rr_record~;
+#X msg 193 502 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 89 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 85 392 rev1~;
+#X floatatom 123 392 5 0 0 0 - - -;
+#X msg 30 303 next \$1;
+#X obj 158 420 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 440 s sync;
+#X obj 30 352 *~ 0.15;
+#X obj 85 369 hip~ 300;
+#X floatatom 129 95 5 0 0 0 - - -;
+#X msg 113 279 0 2 3 5 7 9 10;
+#X obj 30 279 rr_allscales;
+#X obj 30 257 + 35;
+#X floatatom 48 160 5 0 0 0 - - -;
+#X obj 48 137 random 8;
+#X obj 30 211 rr_target 500, f 17;
+#X obj 30 110 rr_pulsa+ 3 2 8;
+#X obj 129 235 rr_trga 4 0 1 1;
+#X text 308 224 Target needs an argument (in ms) as an interval time
+for next output. 2nd inlet is for a chord and 3rd is seed value. It
+returns a sequence untill a target note of next chord and then getout
+chord. Last outlet returns a bang when target note is reached.;
+#X obj 48 182 rr_chrd+ 0 2 6 0;
+#X floatatom 141 160 5 0 0 0 - - -;
+#X obj 30 327 clone 16 rr_tone~ 2500 3;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 23 0;
+#X connect 9 0 2 0;
+#X connect 9 0 2 1;
+#X connect 10 0 9 1;
+#X connect 11 0 28 0;
+#X connect 12 0 13 0;
+#X connect 14 0 2 0;
+#X connect 14 0 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 9 0;
+#X connect 16 0 22 2;
+#X connect 16 0 23 1;
+#X connect 17 0 18 1;
+#X connect 18 0 11 0;
+#X connect 19 0 18 0;
+#X connect 20 0 26 0;
+#X connect 21 0 20 0;
+#X connect 22 0 19 0;
+#X connect 22 1 19 0;
+#X connect 22 2 19 0;
+#X connect 22 3 19 0;
+#X connect 22 4 24 0;
+#X connect 23 0 22 0;
+#X connect 24 0 21 0;
+#X connect 26 0 22 1;
+#X connect 26 1 22 1;
+#X connect 26 2 22 1;
+#X connect 27 0 26 1;
+#X connect 28 0 14 0;
