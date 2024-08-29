@@ -1,0 +1,38 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_atmo~ 20 20 0 24 -128992
+-262144 0;
+#X obj 29 452 rr_OUTdac~;
+#X obj 30 562 rr_record~;
+#X msg 193 536 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 159 452 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 159 472 s sync;
+#X obj 142 411 rev1~;
+#X floatatom 181 411 5 0 0 0 - - -;
+#X obj 155 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 155 118 s new;
+#X obj 142 388 hip~ 50;
+#X obj 30 371 *~ 1;
+#X text 309 109 Atmo needs 2 arguments: 1st clone number and 2nd is
+fundamental tone. Send a bang as new to have new ambient.;
+#X obj 31 119 clone 4 rr_atmo~ 60;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 8 0;
+#X connect 9 0 2 1;
+#X connect 9 0 2 0;
+#X connect 10 0 9 1;
+#X connect 11 0 12 0;
+#X connect 13 0 9 0;
+#X connect 14 0 2 0;
+#X connect 14 0 2 1;
+#X connect 14 0 13 0;
+#X connect 16 0 14 0;
