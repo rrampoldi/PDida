@@ -1,0 +1,86 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_KSfa~ 20 20 0 24 -128992
+-262144 0;
+#X obj 29 422 rr_OUTdac~;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 143 rr_play;
+#X obj 30 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 188 81 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 188 101 s sync;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 101 rr_pulsa 3 1, f 18;
+#X obj 135 127 rr_trga 12 0 1 1;
+#X obj 143 369 hip~ 150;
+#X obj 143 392 rev1~;
+#X floatatom 182 392 5 0 0 0 - - -;
+#X msg 64 260 all \$1;
+#X msg 99 282 all \$1;
+#X msg 30 282 next \$1;
+#X obj 30 209 + 50;
+#X obj 326 144 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 64 239 5 0 0 0 - - -;
+#X obj 30 309 clone 4 rr_KSfa~ 1 0.985 1 1 6000 600, f 41;
+#X floatatom 99 239 5 0 0 0 - - -;
+#X msg 133 260 all \$1;
+#X msg 168 282 all \$1;
+#X floatatom 133 239 5 0 0 0 - - -;
+#X floatatom 168 239 5 0 0 0 - - -;
+#X msg 203 260 all \$1;
+#X msg 238 282 all \$1;
+#X floatatom 203 239 5 0 0 0 - - -;
+#X floatatom 238 239 5 0 0 0 - - -;
+#X text 309 285 KSfa needs 7 arguments and a sig~ in 2nd inlet (or
+noise~) \, you can use inlets too \; 1st are clone instances \; 2nd
+low to high octaves (0.25-4) \; 3rd is feedback (0.5-0.99) \; 4th is
+impulse attack in ms \; 5th is impulse release in ms \; 6th is low
+pass filter for inlet signal \; 7th is low pass filter for feedback.
+;
+#X obj 273 166 wtab 0 35;
+#X obj 30 352 *~ 0.5;
+#X obj 63 209 - 12;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 20 0;
+#X connect 8 0 12 0;
+#X connect 9 0 10 0;
+#X connect 12 0 7 0;
+#X connect 12 1 13 0;
+#X connect 13 0 7 1;
+#X connect 13 0 21 0;
+#X connect 14 0 15 0;
+#X connect 15 0 2 1;
+#X connect 15 0 2 0;
+#X connect 16 0 15 1;
+#X connect 17 0 23 1;
+#X connect 18 0 23 2;
+#X connect 19 0 23 0;
+#X connect 20 0 19 0;
+#X connect 20 0 36 0;
+#X connect 21 0 34 2;
+#X connect 22 0 17 0;
+#X connect 23 0 35 0;
+#X connect 24 0 18 0;
+#X connect 25 0 23 3;
+#X connect 26 0 23 4;
+#X connect 27 0 25 0;
+#X connect 28 0 26 0;
+#X connect 29 0 23 5;
+#X connect 30 0 23 6;
+#X connect 31 0 29 0;
+#X connect 32 0 30 0;
+#X connect 34 0 23 7;
+#X connect 35 0 2 0;
+#X connect 35 0 14 0;
+#X connect 36 0 34 0;

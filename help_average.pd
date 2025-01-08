@@ -1,0 +1,61 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_average 20 20 0 24 -128992
+-262144 0;
+#X obj 30 522 rr_record~;
+#X msg 193 496 rec01.wav;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 279 In allscales put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X obj 30 82 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 142 363 rev1~;
+#X floatatom 180 363 5 0 0 0 - - -;
+#X msg 30 275 next \$1;
+#X obj 30 252 rr_allscales;
+#X floatatom 123 99 5 0 0 0 - - -;
+#X floatatom 204 340 5 0 0 0 - - -;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Stereo spatialization and volume sliders.;
+#X obj 30 323 *~ 0.25;
+#X obj 29 412 rr_XOUTdac~;
+#X obj 142 340 hip~ 1000;
+#X text 308 94 Pulsa+ needs 3 arguments: 1st how many sec for pulse
+duration \; 2nd how many subdivision in pulse \; 3rd how many beats
+to repeat durations sequence. Put a value in 2nd inlet to generate
+new sequence. 1st outlet for bangs series and 2nd outlet for duration
+of every beat.;
+#X msg 117 236 0 2 3 5 7 8 10;
+#X obj 30 174 rr_average 10 2 14;
+#X floatatom 135 151 5 0 0 0 - - -;
+#X obj 30 229 + 35;
+#X floatatom 30 197 5 0 0 0 - - -;
+#X obj 30 300 clone 8 rr_tone~ 1500 3;
+#X obj 30 123 rr_pulsa+ 1 2 10;
+#X text 308 188 Average needs 3 arguments \; 1st is init value \; 2nd
+how many elements in memory to calculate (2-10) \, you can change it
+by 2nd inlet \; 3rd modulo \;;
+#X connect 3 0 2 2;
+#X connect 6 0 24 0;
+#X connect 7 0 15 1;
+#X connect 8 0 7 1;
+#X connect 9 0 23 0;
+#X connect 10 0 9 0;
+#X connect 11 0 24 1;
+#X connect 12 0 16 1;
+#X connect 14 0 15 0;
+#X connect 14 0 16 0;
+#X connect 14 0 15 1;
+#X connect 15 0 2 0;
+#X connect 15 1 2 1;
+#X connect 16 0 7 0;
+#X connect 18 0 10 1;
+#X connect 19 0 22 0;
+#X connect 20 0 19 1;
+#X connect 21 0 10 0;
+#X connect 22 0 21 0;
+#X connect 23 0 14 0;
+#X connect 24 0 19 0;
