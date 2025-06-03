@@ -1,4 +1,4 @@
-#N canvas 597 125 704 637 10;
+#N canvas 6 116 700 637 10;
 #X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
 -233017 -66577 0;
 #X obj 303 21 cnv 15 380 40 empty empty ABS:rr_selfr 20 20 0 24 -128992
@@ -10,7 +10,7 @@ passing seconds while recording. Bang to reset.;
 #X text 309 279 In allscales put in 2nd inlet a progressive series
 (list) of intervals which represents the elements of the scale to use
 (mod 12). [minor scale in example];
-#X obj 30 112 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 30 112 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 142 393 rev1~;
 #X floatatom 180 393 5 0 0 0 - - -;
@@ -19,40 +19,40 @@ passing seconds while recording. Bang to reset.;
 #X floatatom 204 370 5 0 0 0 - - -;
 #X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
 the wave sound. Stereo spatialization and volume sliders.;
-#X obj 30 353 *~ 0.25;
 #X obj 29 418 rr_XOUTdac~;
 #X obj 142 370 hip~ 1000;
 #X obj 30 259 + 35;
 #X floatatom 30 227 5 0 0 0 - - -;
-#X obj 30 330 clone 8 rr_tone~ 1500 3;
 #X msg 117 266 0 2 3 5 7 9 10;
 #X msg 30 179 all bangs;
-#X floatatom 129 154 5 0 0 0 - - -;
-#X msg 129 179 next \$1;
+#X floatatom 123 154 5 0 0 0 - - -;
+#X msg 123 179 next \$1;
 #X text 308 188 Selfr needs a value as seed in 2nd inlet. It returns
 the same random note at the same time interval. Using as clone instance
 you can perform complicated lines.;
 #X obj 30 153 rr_pulsa 5 1;
-#X obj 30 204 clone 10 rr_selfr;
+#X obj 30 353 *~ 0.15;
+#X obj 30 330 clone 24 rr_tone~ 1500 3;
+#X obj 30 204 clone 8 rr_selfr;
 #X connect 3 0 2 2;
-#X connect 6 0 24 0;
-#X connect 7 0 14 1;
+#X connect 6 0 22 0;
+#X connect 7 0 13 1;
 #X connect 8 0 7 1;
-#X connect 9 0 18 0;
+#X connect 9 0 24 0;
 #X connect 10 0 9 0;
-#X connect 11 0 15 1;
-#X connect 13 0 14 0;
-#X connect 13 0 15 0;
-#X connect 13 0 14 1;
-#X connect 14 0 2 0;
-#X connect 14 1 2 1;
-#X connect 15 0 7 0;
-#X connect 16 0 10 0;
-#X connect 17 0 16 0;
-#X connect 18 0 13 0;
-#X connect 19 0 10 1;
-#X connect 20 0 25 0;
-#X connect 21 0 22 0;
-#X connect 22 0 25 1;
-#X connect 24 0 20 0;
-#X connect 25 0 17 0;
+#X connect 11 0 14 1;
+#X connect 13 0 2 0;
+#X connect 13 1 2 1;
+#X connect 14 0 7 0;
+#X connect 15 0 10 0;
+#X connect 16 0 15 0;
+#X connect 17 0 10 1;
+#X connect 18 0 25 0;
+#X connect 19 0 20 0;
+#X connect 20 0 25 1;
+#X connect 22 0 18 0;
+#X connect 23 0 13 0;
+#X connect 23 0 14 0;
+#X connect 23 0 13 1;
+#X connect 24 0 23 0;
+#X connect 25 0 16 0;

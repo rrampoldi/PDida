@@ -3,62 +3,66 @@
 -233017 -66577 0;
 #X obj 303 21 cnv 15 380 40 empty empty ABS:rr_marki 20 20 0 24 -128992
 -262144 0;
-#X obj 29 411 rr_OUTdac~;
-#X obj 30 521 rr_record~;
-#X msg 193 495 rec01.wav;
+#X obj 29 428 rr_OUTdac~;
+#X obj 30 538 rr_record~;
+#X msg 193 512 rec01.wav;
 #X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
 the wave sound. Slide is for volume.;
 #X text 309 550 You can record your performance. Put the name. It show
 passing seconds while recording. Bang to reset.;
 #X text 308 94 HOW TO: Use pulsa to define how much times in seconds
 you choose bang occures.;
-#X obj 30 82 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 30 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 85 385 rev1~;
-#X floatatom 123 385 5 0 0 0 - - -;
-#X msg 30 296 next \$1;
-#X obj 158 413 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 85 402 rev1~;
+#X floatatom 123 402 5 0 0 0 - - -;
+#X msg 30 313 next \$1;
+#X obj 158 430 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 158 433 s sync;
-#X obj 30 345 *~ 0.15;
-#X obj 85 362 hip~ 300;
-#X obj 30 272 rr_allscales;
-#X floatatom 30 227 5 0 0 0 - - -;
-#X obj 30 250 + 35;
-#X obj 30 320 clone 16 rr_tone~ 2500 4;
-#X msg 113 272 0 2 3 5 7 8 10;
-#X obj 30 136 rr_marki;
-#X floatatom 165 121 5 0 0 0 - - -;
-#X obj 102 180 rr_marki;
-#X obj 102 148 rr_trga 4 0 1 1;
-#X obj 102 211 + 0;
-#X obj 30 103 rr_pulsa+ 1 2 5;
-#X text 308 198 Marki needs a value as new seed in 2nd inlet. It returns
+#X obj 158 450 s sync;
+#X obj 30 362 *~ 0.15;
+#X obj 85 379 hip~ 300;
+#X obj 30 229 rr_marki;
+#X obj 117 239 rr_marki;
+#X obj 30 102 rr_pulsa+ 1 2 5;
+#X text 308 238 Marki needs a value as new seed in 2nd inlet. It returns
 sequence of intervals.;
+#X floatatom 30 252 5 0 0 0 - - -;
+#X floatatom 117 262 5 0 0 0 - - -;
+#X obj 117 154 change -1;
+#X obj 162 213 f 0;
+#X floatatom 190 213 5 0 0 0 - - -;
+#X obj 190 139 rr_circula 8 5 20;
+#X obj 162 189 rr_trga 3 0 1 1;
+#X obj 30 337 clone 16 rr_tone~ 2000 4;
+#X obj 30 277 + 72;
 #X connect 2 0 3 0;
 #X connect 2 1 3 1;
 #X connect 4 0 3 2;
-#X connect 8 0 26 0;
+#X connect 8 0 18 0;
 #X connect 9 0 2 0;
 #X connect 9 0 2 1;
 #X connect 10 0 9 1;
-#X connect 11 0 19 0;
+#X connect 11 0 27 0;
 #X connect 12 0 13 0;
 #X connect 14 0 2 0;
 #X connect 14 0 9 0;
 #X connect 14 0 15 0;
 #X connect 15 0 9 0;
-#X connect 16 0 11 0;
-#X connect 17 0 18 0;
+#X connect 16 0 20 0;
+#X connect 17 0 21 0;
 #X connect 18 0 16 0;
-#X connect 19 0 14 0;
-#X connect 20 0 16 1;
-#X connect 21 0 17 0;
-#X connect 22 0 21 1;
-#X connect 22 0 23 1;
-#X connect 22 0 26 1;
-#X connect 23 0 25 0;
-#X connect 24 0 23 0;
-#X connect 25 0 17 0;
-#X connect 26 0 21 0;
-#X connect 26 0 24 0;
+#X connect 18 1 22 0;
+#X connect 20 0 28 0;
+#X connect 21 0 28 0;
+#X connect 22 0 17 0;
+#X connect 22 0 25 0;
+#X connect 22 0 26 0;
+#X connect 23 0 17 1;
+#X connect 23 0 16 1;
+#X connect 23 0 18 1;
+#X connect 24 0 23 1;
+#X connect 25 0 24 0;
+#X connect 26 0 23 0;
+#X connect 27 0 14 0;
+#X connect 28 0 11 0;
