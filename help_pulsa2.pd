@@ -27,11 +27,11 @@ passing seconds while recording. Bang to reset.;
 -1 -1;
 #X msg 62 155 1 2 3 5;
 #X obj 156 210 rr_trga 16 0 1 1;
-#X obj 31 194 rr_pulsa2 2;
 #X text 318 180 Pulsa2 needs a regular beat in 1st inlet \, a list
 in 2nd inlet \, to change sequence a bang in 3rd inlet and an argument
 < of list length. It returns two different pulses splitting list in
 argument point.;
+#X obj 31 194 rr_pulsa2 3;
 #X connect 2 0 3 0;
 #X connect 2 1 3 1;
 #X connect 4 0 3 2;
@@ -46,10 +46,10 @@ argument point.;
 #X connect 15 0 2 1;
 #X connect 15 0 16 0;
 #X connect 16 0 7 0;
-#X connect 17 0 21 0;
-#X connect 18 0 21 2;
-#X connect 19 0 21 1;
+#X connect 17 0 22 0;
+#X connect 18 0 22 2;
+#X connect 19 0 22 1;
 #X connect 20 0 18 0;
-#X connect 21 0 12 0;
-#X connect 21 1 10 0;
-#X connect 21 1 20 0;
+#X connect 22 0 12 0;
+#X connect 22 1 10 0;
+#X connect 22 1 20 0;
