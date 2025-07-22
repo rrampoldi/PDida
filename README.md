@@ -1,5 +1,3 @@
-<img width="200" height="200" alt="Gemini_Generated_Image_buixpbuixpbuixpb" src="https://github.com/user-attachments/assets/5f2afaac-7a53-404a-bad9-daf1aaa8fed0" />
-
 # PDida
 A selected collection of Puredata abstractions for generative music.
 
