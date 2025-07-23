@@ -1,3 +1,6 @@
+
+<img width="1594" height="528" alt="pdida-logo" src="https://github.com/user-attachments/assets/f1352de1-9fdf-4312-8702-0e8e831b1dc1" />
+
 # PDida
 A selected collection of Puredata abstractions for generative music.
 
