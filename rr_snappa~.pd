@@ -1,4 +1,4 @@
-#N canvas 20 116 800 574 10;
+#N canvas 20 116 431 574 10;
 #X obj 54 164 metro 1000;
 #X obj 54 190 snapshot~;
 #X floatatom 54 214 5 0 0 0 - - -;
@@ -38,7 +38,6 @@
 #X obj 254 363 * 10;
 #X obj 285 431 bp~ 100 15;
 #X obj 189 508 outlet;
-#X obj 483 508 line~;
 #X obj 54 480 *~ 1;
 #X connect 0 0 25 0;
 #X connect 0 0 26 0;
@@ -70,8 +69,8 @@
 #X connect 17 0 36 0;
 #X connect 18 0 16 0;
 #X connect 18 1 16 1;
-#X connect 19 0 40 0;
-#X connect 20 0 40 0;
+#X connect 19 0 39 0;
+#X connect 20 0 39 0;
 #X connect 21 0 20 1;
 #X connect 23 0 0 0;
 #X connect 24 0 23 0;
@@ -86,9 +85,9 @@
 #X connect 30 0 25 1;
 #X connect 31 0 26 1;
 #X connect 32 0 13 1;
-#X connect 33 0 40 0;
+#X connect 33 0 39 0;
 #X connect 34 0 10 0;
 #X connect 35 0 37 1;
 #X connect 36 0 33 1;
-#X connect 37 0 40 0;
-#X connect 40 0 22 0;
+#X connect 37 0 39 0;
+#X connect 39 0 22 0;
