@@ -1,0 +1,74 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty a_logical_path 20 20 0 24 -128992
+-262144 0;
+#X obj 29 517 rr_OUTdac~;
+#X obj 30 77 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 141 486 rev1~;
+#X floatatom 179 486 5 0 0 0 - - -;
+#X obj 158 519 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 539 s sync;
+#X obj 141 463 hip~ 500;
+#X floatatom 136 97 5 0 0 0 - - -;
+#X obj 30 120 bng 15 250 50 0 empty empty empty 17 7 0 10 -1 -4034
+-1;
+#X obj 30 97 rr_pulsa+ 1 1 11;
+#X obj 30 173 nbx 3 15 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 12
+-1 -4034 -1 7 256;
+#X obj 30 228 nbx 3 15 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 12
+-1 -4034 -1 72 256;
+#X msg 30 346 next \$1;
+#X obj 30 369 clone 10 rr_K+~ 2;
+#X obj 129 264 rr_wtab~ 0 20;
+#X obj 212 245 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 129 241 - 12;
+#X obj 129 344 lop~ 150;
+#X obj 30 392 lop~ 1500;
+#X obj 30 446 rr_mix~ 0.35;
+#X obj 239 241 rr_pkbdp;
+#X obj 63 418 rr_ddetune~ 100 10 1000 0.5;
+#X obj 30 150 rr_regola 1 1 1;
+#X obj 30 203 rr_mappa+ 7 12 0 0;
+#X text 304 86 Start with a regular \, irregular \, or modulated pulse
+that you can easily modify.;
+#X text 305 135 A rule or system of rules for generating a sequence
+\, list \, or group of values that you can modify by changing the input
+parameters.;
+#X text 305 200 A mapping system for scaling values within a specific
+range.;
+#X text 308 322 A sound synthesis engine that can be easily modified
+through individual parameters.;
+#X text 309 428 Audio signal modifiers \, delays and reverbs.;
+#X text 306 491 Connect the signal to an audio output and record your
+performance to a file.;
+#X obj 311 556 rr_record~;
+#X msg 474 531 rec01.wav;
+#X connect 3 0 11 0;
+#X connect 4 0 2 0;
+#X connect 4 0 2 1;
+#X connect 5 0 4 1;
+#X connect 6 0 7 0;
+#X connect 8 0 4 0;
+#X connect 9 0 11 1;
+#X connect 11 0 10 0;
+#X connect 13 0 14 0;
+#X connect 13 0 18 0;
+#X connect 13 0 22 0;
+#X connect 14 0 15 0;
+#X connect 15 0 20 0;
+#X connect 16 0 19 0;
+#X connect 17 0 16 2;
+#X connect 18 0 16 0;
+#X connect 19 0 15 1;
+#X connect 20 0 21 0;
+#X connect 20 0 23 0;
+#X connect 21 0 2 0;
+#X connect 21 0 8 0;
+#X connect 23 0 21 1;
+#X connect 24 0 12 0;
+#X connect 25 0 13 0;
+#X connect 33 0 32 2;
