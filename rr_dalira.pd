@@ -1,0 +1,62 @@
+#N canvas 207 143 1019 607 10;
+#X obj 40 125 expr random($f2 \, $f3), f 32;
+#X obj 229 99 clip 0 6;
+#X floatatom 40 148 5 0 0 0 - - -;
+#X obj 134 99 clip -6 0;
+#X obj 40 236 outlet;
+#X obj 40 25 inlet;
+#X obj 40 99 t b;
+#X obj 134 25 inlet;
+#X obj 229 25 inlet;
+#X obj 294 40 loadbang;
+#X obj 134 76 f \$1;
+#X obj 229 76 f \$2;
+#X obj 40 170 expr (if($f1<0 \, abs($f1*5)%12 \, $f1*7%12) + (random(-1
+\, 1) * 12) +$f2 );
+#X obj 391 25 inlet;
+#X obj 391 96 clip 0 11;
+#X obj 391 73 f \$3;
+#X text 495 13 ### Combinazioni di Scale ($offset = 0$) | Scuro ($f2$)
+| Chiaro ($f3$) | Note generate (da Do) | Nome della Scala | | :---:
+| :---: | :--- | :--- | | -0 | 0 | [0] | Singola nota | | -1 | 0 |
+[0 \, 5] | Biduettonica | | -0 | 1 | [0 \, 7] | Biduettonica | | -2
+| 0 | [0 \, 5 \, 10] | Tritonica Minore | | -1 | 1 | [0 \, 5 \, 7]
+| Tritonica Sospesa | | -0 | 2 | [0 \, 2 \, 7] | Tritonica Maggiore
+| | -3 | 0 | [0 \, 5 \, 10 \, 3] | Tetratonica Minore | | -2 | 1 |
+[0 \, 5 \, 7 \, 10] | Tetratonica Sus2 | | -1 | 2 | [0 \, 2 \, 5 \,
+7] | Tetratonica Minore | | -0 | 3 | [0 \, 2 \, 7 \, 9] | Tetratonica
+Maggiore | | -4 | 0 | [0 \, 5 \, 10 \, 3 \, 8] | Pentatonica Minore
+4 | | -3 | 1 | [0 \, 5 \, 7 \, 10 \, 3] | Pentatonica Minore | | -2
+| 2 | [0 \, 2 \, 5 \, 7 \, 10] | Pentatonica Sospesa | | -1 | 3 | [0
+\, 2 \, 5 \, 7 \, 9] | Pentatonica Minore | | -0 | 4 | [0 \, 2 \, 4
+\, 7 \, 9] | Pentatonica Maggiore | | -5 | 0 | [0 \, 5 \, 10 \, 3 \,
+8 \, 1] | Esatonica Locria | | -4 | 1 | [0 \, 5 \, 7 \, 10 \, 3 \,
+8] | Esatonica Minore 6 | | -3 | 2 | [0 \, 2 \, 5 \, 7 \, 10 \, 3]
+| Esatonica Maggiore 6 | | -2 | 3 | [0 \, 2 \, 5 \, 7 \, 9 \, 10] |
+Scala di Blues | | -1 | 4 | [0 \, 2 \, 4 \, 5 \, 7 \, 9] | Scala di
+Sei | | -0 | 5 | [0 \, 2 \, 4 \, 7 \, 9 \, 11] | Scala Lidia | | -6
+| 0 | [0 \, 5 \, 10 \, 3 \, 8 \, 1 \, 6] | Eptatonica Locria | | -5
+| 1 | [0 \, 5 \, 7 \, 10 \, 3 \, 8 \, 1] | Eptatonica Frigia | | -4
+| 2 | [0 \, 2 \, 5 \, 7 \, 10 \, 3 \, 8] | Scala Eolia (Minore Naturale)
+| | -3 | 3 | [0 \, 2 \, 5 \, 7 \, 9 \, 10 \, 3] | Scala Dorica | |
+-2 | 4 | [0 \, 2 \, 4 \, 5 \, 7 \, 9 \, 10] | Scala Misolidia | | -1
+| 5 | [0 \, 2 \, 4 \, 5 \, 7 \, 9 \, 11] | Scala Ionica (Maggiore Naturale)
+| | -0 | 6 | [0 \, 2 \, 4 \, 6 \, 7 \, 9 \, 11] | Scala Lidia | | -6
+| 5 | [0..11] | Scala Cromatica |, f 78;
+#X connect 0 0 2 0;
+#X connect 1 0 0 2;
+#X connect 2 0 12 0;
+#X connect 3 0 0 1;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X connect 7 0 10 0;
+#X connect 8 0 11 0;
+#X connect 9 0 10 0;
+#X connect 9 0 11 0;
+#X connect 9 0 15 0;
+#X connect 10 0 3 0;
+#X connect 11 0 1 0;
+#X connect 12 0 4 0;
+#X connect 13 0 15 0;
+#X connect 14 0 12 1;
+#X connect 15 0 14 0;
