@@ -1,0 +1,30 @@
+#N canvas 360 268 706 420 10;
+#X obj 87 276 change -1;
+#X obj 35 171 expr round(($f1 % $f2) + (random(0 \, $f3) * ($f2 - ($f1
+% $f2)) / $f2)), f 47;
+#X obj 87 236 expr round(($f1 % $f2) + (random(0 \, $f3) * ($f2 - ($f1
+% $f2)) / $f2)) - 7, f 38;
+#X obj 87 342 outlet;
+#X obj 35 342 outlet;
+#X obj 35 38 inlet;
+#X obj 174 142 f \$1;
+#X obj 294 142 f \$2;
+#X obj 35 126 t f f b, f 18;
+#X obj 195 38 inlet;
+#X obj 315 38 inlet;
+#X obj 312 212 / 2;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 5 0 8 0;
+#X connect 6 0 1 1;
+#X connect 6 0 2 1;
+#X connect 7 0 1 2;
+#X connect 7 0 11 0;
+#X connect 8 0 1 0;
+#X connect 8 1 2 0;
+#X connect 8 2 6 0;
+#X connect 8 2 7 0;
+#X connect 9 0 6 1;
+#X connect 10 0 7 1;
+#X connect 11 0 2 2;
