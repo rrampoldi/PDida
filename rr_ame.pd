@@ -1,0 +1,39 @@
+#N canvas 361 209 684 469 10;
+#X obj 44 22 inlet;
+#X obj 44 55 t b;
+#X obj 44 107 random 1000;
+#X obj 283 22 inlet;
+#X msg 283 91 seed \$1;
+#X obj 44 132 expr if($f1 < 322 \, 0 \, if($f1 < 483 \, 7 \, if($f1
+< 590 \, 5 \, if($f1 < 671 \, 4 \, if($f1 < 735 \, 3 \, if($f1 < 789
+\, 9 \, if($f1 < 835 \, 8 \, if($f1 < 875 \, 2 \, if($f1 < 911 \, 10
+\, if($f1 < 943 \, 11 \, if($f1 < 972 \, 1 \, 6)))))))))));
+#X obj 44 305 outlet;
+#X obj 401 218 sel 0;
+#X obj 401 305 outlet;
+#X obj 44 194 t f f b f, f 60;
+#X obj 282 229 random 2;
+#X obj 163 289 spigot;
+#X obj 44 273 spigot;
+#X obj 77 245 == 0;
+#X obj 196 261 == 1;
+#X obj 163 220 expr -(12-$f1);
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 4 0 10 0;
+#X connect 5 0 9 0;
+#X connect 7 0 8 0;
+#X connect 9 0 12 0;
+#X connect 9 1 15 0;
+#X connect 9 2 10 0;
+#X connect 9 3 7 0;
+#X connect 10 0 14 0;
+#X connect 10 0 13 0;
+#X connect 11 0 6 0;
+#X connect 12 0 6 0;
+#X connect 13 0 12 1;
+#X connect 14 0 11 1;
+#X connect 15 0 11 0;
