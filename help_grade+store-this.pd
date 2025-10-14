@@ -1,0 +1,64 @@
+#N canvas 593 116 712 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_grade_store-this 20
+20 0 24 -128992 -262144 0;
+#X obj 29 418 rr_OUTdac~;
+#X obj 30 528 rr_record~;
+#X msg 193 502 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 87 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 85 392 rev1~;
+#X floatatom 123 392 5 0 0 0 - - -;
+#X msg 30 303 next \$1;
+#X obj 158 420 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 440 s sync;
+#X obj 30 352 *~ 0.15;
+#X obj 85 369 hip~ 500;
+#X obj 30 162 rr_store-this;
+#X obj 30 138 random 4;
+#X msg 131 146 IV V iii vi;
+#X msg 30 201 iii;
+#X msg 105 185 set \$1;
+#X obj 30 110 rr_pulsa 1 2;
+#X obj 30 231 rr_grade, f 13;
+#X obj 30 278 + 48;
+#X text 308 162 Store-this needs a value in 1st inlet and a list in
+2nd inlet. It returns a bang in 1st outlet and value in 2nd outlet.
+;
+#X text 308 242 Grade needs a message in 1st inlet in like this (I
+Ib I# I7 i ib i# II IIb II# II7 ii iib ii# III IIIb III7 iii iiib IV
+IV# IV7 iv iv# V Vb V# V7 v vb v# VI VIb VI# VI7 vi vib vi# VII VIIb
+VII7 vii viib). It returns 4 voices chord.;
+#X obj 30 327 clone 16 rr_tone~ 3000 3;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 20 0;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;
+#X connect 9 0 8 1;
+#X connect 10 0 25 0;
+#X connect 11 0 12 0;
+#X connect 13 0 2 0;
+#X connect 13 0 8 0;
+#X connect 13 0 14 0;
+#X connect 14 0 8 0;
+#X connect 15 0 18 0;
+#X connect 15 1 19 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 1;
+#X connect 18 0 21 0;
+#X connect 19 0 18 0;
+#X connect 20 0 16 0;
+#X connect 21 0 22 0;
+#X connect 21 1 22 0;
+#X connect 21 2 22 0;
+#X connect 21 3 22 0;
+#X connect 22 0 10 0;
+#X connect 25 0 13 0;
