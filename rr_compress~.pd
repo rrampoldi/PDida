@@ -1,0 +1,10 @@
+#N canvas 433 254 450 300 10;
+#X obj 52 113 expr~ pow(abs($v1) \, $f2) * copysign(1 \, $v1);
+#X obj 307 88 clip 0.5 2;
+#X obj 53 26 inlet~;
+#X obj 307 26 inlet;
+#X obj 52 231 outlet~;
+#X connect 0 0 4 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;

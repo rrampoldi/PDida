@@ -1,0 +1,60 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_glitching~ 20 20 0 24
+-128992 -262144 0;
+#X obj 29 422 rr_OUTdac~;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 143 rr_play;
+#X obj 30 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 101 rr_pulsa 3 1, f 18;
+#X obj 135 127 rr_trga 12 0 1 1;
+#X obj 143 369 hip~ 150;
+#X obj 143 392 rev1~;
+#X floatatom 182 392 5 0 0 0 - - -;
+#X msg 30 242 next \$1;
+#X obj 30 209 + 50;
+#X obj 204 199 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 155 225 wtab 0 35;
+#X obj 30 352 *~ 0.5;
+#X obj 63 209 - 5;
+#X obj 30 269 clone 4 rr_KSfa~ 2 0.995 1 1 6000 600, f 19;
+#X obj 30 328 rr_glitching~ 5 0.95 0.5;
+#X floatatom 77 306 5 0 0 0 - - -;
+#X floatatom 171 306 5 0 0 0 - - -;
+#X text 308 314 Glitching needs an audio signal in 1st inlet and 3
+arguments \; 1st is glitch ring modulation freq (0.1 - 20) \; 2nd dry/wet
+effect (0-1) \; 3rd time/duration glitched.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 16 0;
+#X connect 8 0 10 0;
+#X connect 10 0 7 0;
+#X connect 10 1 11 0;
+#X connect 11 0 7 1;
+#X connect 12 0 13 0;
+#X connect 13 0 2 1;
+#X connect 13 0 2 0;
+#X connect 14 0 13 1;
+#X connect 15 0 21 0;
+#X connect 16 0 15 0;
+#X connect 16 0 20 0;
+#X connect 17 0 18 2;
+#X connect 18 0 21 7;
+#X connect 19 0 2 0;
+#X connect 19 0 12 0;
+#X connect 20 0 18 0;
+#X connect 21 0 22 0;
+#X connect 22 0 19 0;
+#X connect 23 0 22 1;
+#X connect 24 0 22 3;

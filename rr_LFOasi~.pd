@@ -1,0 +1,17 @@
+#N canvas 395 172 658 361 10;
+#X obj 26 89 phasor~;
+#X obj 231 89 clip 0.1 10;
+#X obj 26 113 expr~ if($v1 < 0.5 \, pow($v1 * 2 \, $f2) \, 1 - pow(($v1
+- 0.5) * 2 \, $f3)), f 69;
+#X obj 437 89 clip 0.1 10;
+#X obj 26 20 inlet;
+#X obj 27 260 outlet~;
+#X obj 231 20 inlet;
+#X obj 437 20 inlet;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 2 0 5 0;
+#X connect 3 0 2 2;
+#X connect 4 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 3 0;
