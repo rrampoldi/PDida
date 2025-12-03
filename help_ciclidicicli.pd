@@ -1,0 +1,59 @@
+#N canvas 370 125 704 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_ciclidicicli 20 20 0
+24 -128992 -262144 0;
+#X obj 30 528 rr_record~;
+#X msg 193 502 rec01.wav;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 76 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 142 393 rev1~;
+#X floatatom 180 393 5 0 0 0 - - -;
+#X msg 30 305 next \$1;
+#X floatatom 204 370 5 0 0 0 - - -;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Stereo spatialization and volume sliders.;
+#X obj 30 353 *~ 0.25;
+#X obj 29 418 rr_XOUTdac~;
+#X obj 142 370 hip~ 1000;
+#X obj 30 330 clone 12 rr_tone~ 2500 3;
+#X obj 30 282 rr_mappa+ 7 12 0 0;
+#X floatatom 177 82 5 0 0 0 - - -;
+#X obj 30 97 rr_pulsa+ 3 3 8;
+#X floatatom 79 175 5 0 0 0 - - -;
+#X floatatom 128 175 5 0 0 0 - - -;
+#X obj 30 199 rr_ciclidicicli 1 12 7 12;
+#X obj 103 225 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 177 225 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 309 170 Ciclidicicli needs a bang in 1st inlet \, 4 arguments
+and 2 values (0-1) in 2nd and 3rd inlets \; 1st/2nd are Step and Range
+of first cycle \, it determines Step value in Principal cycle \; 3rd/4th
+are Step and Range of second cycle \, it determines Range value in
+Principal cycle \; 1st/2nd inlets (0-1) are probabilistic coeff to
+changes occure \; 4th inlet takes a seeds to have same sequence.;
+#X connect 3 0 2 2;
+#X connect 5 0 17 0;
+#X connect 6 0 12 1;
+#X connect 7 0 6 1;
+#X connect 8 0 14 0;
+#X connect 9 0 13 1;
+#X connect 11 0 12 0;
+#X connect 11 0 13 0;
+#X connect 11 0 12 1;
+#X connect 12 0 2 0;
+#X connect 12 1 2 1;
+#X connect 13 0 6 0;
+#X connect 14 0 11 0;
+#X connect 15 0 8 0;
+#X connect 16 0 17 1;
+#X connect 16 0 20 3;
+#X connect 17 0 20 0;
+#X connect 18 0 20 1;
+#X connect 19 0 20 2;
+#X connect 20 0 15 0;
+#X connect 20 1 21 0;
+#X connect 20 2 22 0;
