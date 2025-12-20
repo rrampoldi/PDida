@@ -1,0 +1,56 @@
+#N canvas 17 116 711 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_ratioscale 20 20 0 24
+-128992 -262144 0;
+#X obj 29 418 rr_OUTdac~;
+#X obj 30 528 rr_record~;
+#X msg 193 502 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 89 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 85 392 rev1~;
+#X floatatom 123 392 5 0 0 0 - - -;
+#X obj 158 420 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 440 s sync;
+#X obj 30 352 *~ 0.15;
+#X msg 30 302 next \$1;
+#X obj 85 369 hip~ 500;
+#X obj 30 110 rr_pulsa+ 1 2 20;
+#X floatatom 30 156 5 0 0 0 - - -;
+#X floatatom 30 280 5 0 0 0 - - -;
+#X obj 30 224 rr_ratioscale 0;
+#X obj 30 133 rr_count 14 1;
+#X obj 30 327 clone 16 rr_tone~ 1500 3;
+#X msg 130 224 1 1.125 1.2 1.5 1.6;
+#X text 308 224 Ratioscale needs an argument (0-16) as selected scale
+or a list with ratios sequence you want in 2nd inlet. It returns a
+scale based on grade ratio.;
+#X obj 30 178 + 25;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 16 0;
+#X connect 9 0 2 0;
+#X connect 9 0 2 1;
+#X connect 10 0 9 1;
+#X connect 11 0 12 0;
+#X connect 13 0 2 0;
+#X connect 13 0 9 0;
+#X connect 13 0 15 0;
+#X connect 14 0 21 0;
+#X connect 15 0 9 0;
+#X connect 16 0 20 0;
+#X connect 17 0 24 0;
+#X connect 18 0 14 0;
+#X connect 19 0 18 0;
+#X connect 20 0 17 0;
+#X connect 21 0 13 0;
+#X connect 22 0 19 1;
+#X connect 24 0 19 0;

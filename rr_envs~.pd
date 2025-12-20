@@ -1,0 +1,18 @@
+#N canvas 6 116 450 300 10;
+#X obj 50 123 expr~ pow(sin($v1 * 3.1416) \, $f2);
+#X obj 245 100 clip 1 20;
+#X obj 245 32 inlet;
+#X obj 50 100 line~;
+#X msg 50 78 0 \, 1 \$1;
+#X obj 50 32 inlet;
+#X obj 245 78 f \$2;
+#X obj 50 238 outlet~;
+#X obj 300 32 loadbang;
+#X connect 0 0 7 0;
+#X connect 1 0 0 1;
+#X connect 2 0 6 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 8 0 6 0;
