@@ -1,0 +1,26 @@
+#N canvas 353 116 548 457 10;
+#X obj 53 103 expr if($f2==0 \, $f1 \, if($f2==1 \, if($f3==0 \, ($f1+9)%12
+\, ($f1+3)%12) \, if($f3==0 \, ($f1+4)%12 \, ($f1+8)%12))) \; if($f2==0
+\, if($f3==0 \, ($f1+3)%12 \, ($f1+4)%12) \, if($f2==1 \, if($f3==0
+\, ($f1+0)%12 \, ($f1+7)%12) \, if($f3==0 \, ($f1+7)%12 \, ($f1+0)%12)))
+\; if($f2==0 \, if($f3==0 \, ($f1+7)%12 \, ($f1+7)%12) \, if($f2==1
+\, if($f3==0 \, ($f1+4)%12 \, ($f1+11)%12) \, if($f3==0 \, ($f1+11)%12
+\, ($f1+3)%12))), f 37;
+#X obj 53 79 % 12;
+#X obj 162 79 % 3;
+#X obj 272 79 % 2;
+#X obj 53 13 inlet;
+#X obj 162 13 inlet;
+#X obj 272 13 inlet;
+#X obj 53 330 outlet;
+#X obj 162 330 outlet;
+#X obj 272 330 outlet;
+#X connect 0 0 7 0;
+#X connect 0 1 8 0;
+#X connect 0 2 9 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
+#X connect 3 0 0 2;
+#X connect 4 0 1 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
