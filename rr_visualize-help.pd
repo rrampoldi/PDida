@@ -1,0 +1,66 @@
+#N canvas 6 116 693 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_visualize 20 20 0 24
+-128992 -262144 0;
+#X obj 30 509 rr_OUTdac~;
+#X obj 29 101 rr_density;
+#X obj 29 432 /~ 3;
+#X obj 498 426 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 399 448 rr_visualize 2000;
+#X obj 144 478 *~ 0.5;
+#X text 298 479 Visualize needs an arguments that is numbers of ms
+for decay time of points. Put signal in 1st inlet~ and 1/0 in 2nd inlet
+to start/stop.;
+#X obj 29 235 rr_allscales;
+#X msg 118 219 0 2 3 5 7 9 10;
+#X obj 29 166 t b b b b, f 17;
+#X obj 37 328 rr_allscales;
+#X obj 29 212 + 35;
+#X obj 37 305 + 35;
+#X obj 37 351 rr_tone~ 0 300 3;
+#X obj 158 328 rr_allscales;
+#X obj 158 305 + 35;
+#X obj 158 351 rr_tone~ 0 300 3;
+#X obj 163 196 t f f;
+#X obj 220 212 + 7;
+#X obj 163 173 cycle1 0 32 5 1 30;
+#X obj 29 258 rr_tone~ 0 1000 2;
+#X obj 29 456 rr_echo~ e1 50 0.5;
+#X obj 29 189 rr_minima 0 8 0 1 0;
+#X obj 158 282 rr_minima 1 2 1 1 5;
+#X obj 37 282 rr_minima 0 2 1 4 0;
+#X connect 3 0 11 0;
+#X connect 4 0 6 0;
+#X connect 4 0 23 0;
+#X connect 5 0 6 1;
+#X connect 7 0 2 1;
+#X connect 7 0 2 0;
+#X connect 9 0 22 0;
+#X connect 10 0 9 1;
+#X connect 10 0 12 1;
+#X connect 10 0 16 1;
+#X connect 11 0 24 0;
+#X connect 11 1 26 0;
+#X connect 11 2 25 0;
+#X connect 11 3 21 0;
+#X connect 12 0 15 0;
+#X connect 13 0 9 0;
+#X connect 14 0 12 0;
+#X connect 15 0 4 0;
+#X connect 16 0 18 0;
+#X connect 17 0 16 0;
+#X connect 18 0 4 0;
+#X connect 19 0 13 1;
+#X connect 19 1 20 0;
+#X connect 20 0 14 1;
+#X connect 20 0 17 1;
+#X connect 21 0 19 0;
+#X connect 22 0 4 0;
+#X connect 23 0 2 0;
+#X connect 23 0 2 1;
+#X connect 23 1 7 0;
+#X connect 24 0 13 0;
+#X connect 25 0 17 0;
+#X connect 26 0 14 0;

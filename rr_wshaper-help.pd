@@ -1,0 +1,72 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_wshaper 20 20 0 24 -128992
+-262144 0;
+#X obj 29 452 rr_OUTdac~;
+#X obj 30 562 rr_record~;
+#X msg 193 536 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 412 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 308 134 Choose how many elements in your sequence [num] then
+[set].You can click [set] again for a new sequence. You can bang in
+2nd inlet to [set]. 3rd inlet (2-6) how many repetitions of sequence
+to bang out in 2nd outlet.;
+#X obj 141 421 *~ 0.25;
+#X obj 30 159 rr_play;
+#X obj 30 111 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 123 187 rr_trga 16 0 1 1;
+#X obj 121 111 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 121 131 s sync;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X text 308 198 Cycle1 (as circle) needs five arguments: 1st for clone
+\; 2nd is for how many bangs in to have a bang out (a counter) \; 3rd
+is for interval to repeat on every cycle \; 4rt in how many octaves
+\; 5th is root tone to begin.;
+#X obj 30 229 + 60;
+#X obj 30 301 clone 4 rr_wshaper~ 0.5 0.25 0.05 0.15 50 2500;
+#X msg 30 276 next \$1;
+#X obj 30 252 t f b, f 10;
+#X obj 87 348 vline~;
+#X obj 29 365 *~;
+#X obj 30 131 rr_pulsa 3 1;
+#X msg 87 325 1 20 \, 0 50 50;
+#X text 339 289 Wshaper needs 7 arguments: 1st for clone \; 2nd is
+amplitude of sine wave (0:1) \; 3rd is amplitude of sqrt wave (0:1)
+\; 4th is amplitude of saw wave (0:1) \; 5th is amplitude ot tri wave
+(0:1) \; 6th is cutoff for high pass filter \; 7th is cutoof for low
+pass filter., f 55;
+#X obj 30 398 rr_echo~ e1 500 0.5;
+#X obj 99 213 rr_cycle1 0 4 5 1 60;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 9 0 2 1;
+#X connect 9 0 2 0;
+#X connect 10 0 17 0;
+#X connect 11 0 23 0;
+#X connect 12 0 10 1;
+#X connect 13 0 14 0;
+#X connect 17 0 20 0;
+#X connect 18 0 22 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 20 1 24 0;
+#X connect 21 0 22 1;
+#X connect 22 0 26 0;
+#X connect 23 0 10 0;
+#X connect 23 1 12 0;
+#X connect 23 1 27 0;
+#X connect 24 0 21 0;
+#X connect 26 0 2 0;
+#X connect 26 0 2 1;
+#X connect 26 1 9 0;
+#X connect 27 0 17 1;

@@ -1,0 +1,10 @@
+#N canvas 6 116 450 300 10;
+#X obj 31 76 abs;
+#X obj 31 99 max \$1;
+#X obj 31 122 min \$2;
+#X obj 31 175 outlet;
+#X obj 31 28 inlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;

@@ -1,0 +1,68 @@
+#N canvas 611 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_t-ca8 20 20 0 24 -128992
+-262144 0;
+#X obj 29 445 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 481 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 375 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 421 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence.Duration
+< 50ms may be a simple reverber. You can put 3rd attribute from 0-1
+for feedback.;
+#X msg 30 362 next \$1;
+#X obj 30 102 rr_density;
+#X obj 30 314 spigot;
+#X obj 30 384 clone rr_tone~ 8 500 2;
+#X msg 94 188 1 50;
+#X obj 30 268 % 24;
+#X obj 30 410 rr_echo~ e1 50 0.25;
+#X msg 132 188 1 65;
+#X obj 30 291 + 50;
+#X msg 164 256 1 40;
+#X obj 100 313 sel 1;
+#X obj 100 282 rr_ca8 0 0 1 1 1 1 0 0;
+#X text 349 249 Perc~ needs attributes: 1st for cloning \; 2nd for
+tone (in Hz) \; 3rd for release \; 4th for decay type \; 5th amp of
+tone (< 0.5) \; 6th amp of noise (< 0.5) \; 7th is lpf \; 8th is hpf.
+, f 52;
+#X text 308 165 ca8 is a one dimension cellular automaton: it need
+8 arguments (0 or 1) that are the rules \; put in 2nd inlet a message
+with 1 and a number (30:88) that is initial state. You can put multiple
+pair of numbers. 1st output is numbers from 30 to 88 and 2nd outlet
+is 0/1.;
+#X obj 30 222 rr_ca8 0 0 1 1 1 1 0 0;
+#X obj 100 335 rr_perc~ 0 250 90 3 0.5 0.35 4000 1000;
+#X obj 30 245 + 4;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 10 0 13 0;
+#X connect 11 0 21 0;
+#X connect 11 0 24 0;
+#X connect 12 0 10 0;
+#X connect 13 0 16 0;
+#X connect 14 0 24 1;
+#X connect 15 0 18 0;
+#X connect 16 0 2 0;
+#X connect 16 0 2 1;
+#X connect 16 1 2 1;
+#X connect 17 0 24 1;
+#X connect 17 0 21 1;
+#X connect 18 0 12 0;
+#X connect 19 0 21 1;
+#X connect 20 0 25 0;
+#X connect 21 1 20 0;
+#X connect 24 0 26 0;
+#X connect 24 1 12 1;
+#X connect 25 0 16 0;
+#X connect 26 0 15 0;

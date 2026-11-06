@@ -1,0 +1,56 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_rearmo 20 20 0 24 -128992
+-262144 0;
+#X obj 29 412 rr_OUTdac~;
+#X obj 30 522 rr_record~;
+#X msg 193 496 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 30 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 85 376 rev1~;
+#X floatatom 123 376 5 0 0 0 - - -;
+#X msg 30 287 next \$1;
+#X obj 158 414 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 434 s sync;
+#X obj 30 336 *~ 0.15;
+#X obj 85 353 hip~ 300;
+#X obj 30 146 random 12;
+#X floatatom 30 227 5 0 0 0 - - -;
+#X floatatom 129 226 5 0 0 0 - - -;
+#X obj 30 169 + 35;
+#X obj 30 123 rr_pulsa 2 1;
+#X obj 30 310 clone 16 rr_tone~ 2000 3;
+#X obj 30 202 rr_rearmo 5 2 100;
+#X text 308 204 Rearmo needs 3 arguments: 1st is how many value in
+to have a rearmonizaion from 2nd outlet \; 2nd is scale grade on which
+to rearmonize \; 3rd is delay in ms in chrd. (It rearmonizes with 4
+notes in mod 12).;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 20 0;
+#X connect 9 0 2 0;
+#X connect 9 0 2 1;
+#X connect 10 0 9 1;
+#X connect 11 0 21 0;
+#X connect 12 0 13 0;
+#X connect 14 0 2 0;
+#X connect 14 0 9 0;
+#X connect 14 0 15 0;
+#X connect 15 0 9 0;
+#X connect 16 0 19 0;
+#X connect 17 0 11 0;
+#X connect 18 0 11 0;
+#X connect 19 0 22 0;
+#X connect 20 0 16 0;
+#X connect 21 0 14 0;
+#X connect 22 0 17 0;
+#X connect 22 1 18 0;

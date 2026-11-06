@@ -1,0 +1,63 @@
+#N canvas 608 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_lolo~ 20 20 0 24 -128992
+-262144 0;
+#X obj 29 432 rr_OUTdac~;
+#X obj 30 542 rr_record~;
+#X msg 193 516 rec01.wav;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 412 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 308 134 Choose how many elements in your sequence [num] then
+[set].You can click [set] again for a new sequence. You can bang in
+2nd inlet to [set]. 3rd inlet (2-6) how many repetitions of sequence
+to bang out in 2nd outlet.;
+#X obj 141 401 *~ 0.25;
+#X obj 30 139 rr_play;
+#X obj 30 91 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 121 91 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 121 111 s sync;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X obj 29 345 *~;
+#X obj 30 111 rr_pulsa 3 1;
+#X text 308 201 Wshaper needs 7 arguments: 1st for clone \; 2nd is
+amplitude of sine wave (0:1) \; 3rd is amplitude of sqrt wave (0:1)
+\; 4th is amplitude of saw wave (0:1) \; 5th is amplitude ot tri wave
+(0:1) \; 6th is cutoff for high pass filter \; 7th is cutoof for low
+pass filter., f 59;
+#X obj 43 298 rr_lolo~ 0.5 0 1 0;
+#X obj 30 206 + 50;
+#X obj 30 378 rr_echo~ e1 500 0.5;
+#X obj 148 271 rr_lolo~ 6.5 1 1 0;
+#X obj 43 322 clip~ -1 1;
+#X text 309 302 Lolo needs 4 arguments (or inlets values): 1st is LFO
+(0-20) \; 2nd is wave type: sine \, square \, saw \, tri \; 3rd is
+amplitude \; 4th is offset. A bang in 5th inlet returns a snapshot
+value. You can sum another lolo in last inlet.;
+#X obj 30 235 rr_wshaper~ 0 0 0.1 0.2 2 300 3000;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 9 0 2 1;
+#X connect 9 0 2 0;
+#X connect 10 0 19 0;
+#X connect 11 0 16 0;
+#X connect 12 0 13 0;
+#X connect 15 0 20 0;
+#X connect 16 0 10 0;
+#X connect 18 0 22 0;
+#X connect 19 0 24 0;
+#X connect 20 0 2 0;
+#X connect 20 0 2 1;
+#X connect 20 1 9 0;
+#X connect 21 0 18 5;
+#X connect 22 0 15 1;
+#X connect 24 0 15 0;

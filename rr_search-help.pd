@@ -1,0 +1,78 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_search 20 20 0 24 -128992
+-262144 0;
+#X obj 29 456 rr_OUTdac~;
+#X obj 30 566 rr_record~;
+#X msg 193 540 rec01.wav;
+#X text 309 510 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset., f 56;
+#X obj 30 91 rr_density;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 460 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X obj 30 156 t b b;
+#X obj 30 409 rr_echo~ e1 500 0.15;
+#X obj 141 432 *~ 0.25;
+#X text 308 130 Cycle1 (as circle) needs five arguments: 1st for clone
+\; 2nd is for how many bangs in to have a bang out (a counter) \; 3rd
+is for interval to repeat on every cycle \; 4rt in how many octaves
+\; 5th is root tone to begin.;
+#X text 308 215 Polyri needs two arguments (better not two odds numbers).
+It bangs out results of mix., f 58;
+#X obj 81 157 rr_cycle1 0 32 5 1 0;
+#X obj 30 181 rr_polyri 2 3;
+#X obj 30 204 t b b;
+#X obj 30 227 rr_polyri 3 2;
+#X obj 30 250 t b b;
+#X obj 30 292 rr_search;
+#X obj 30 315 + 50;
+#X obj 123 220 rr_search;
+#X obj 123 243 + 54;
+#X obj 30 361 rr_overtone~ 0 1 0.25 10 0 800 3;
+#X obj 123 265 rr_overtone~ 0 2 0.25 10 0 400 3;
+#X obj 123 290 rr_search;
+#X obj 123 335 rr_overtone~ 0 3 0.25 10 0 200 3;
+#X obj 123 313 + 57;
+#X obj 30 386 /~ 3;
+#X text 339 324 With overtone you can generate harmonics as you want
+\; 1st argument fundamental \; 2nd argument number of harmonic \; 3rd
+ampitude (0-1) \; 4th attack in ms \; 5th sustain in ms \; 6th release
+in ms \; 7th type of curve (1-8).;
+#X text 338 255 Search needs a number (0:16) in 2nd inlet to search
+\; It returns in outlet result of searching and when it reachs target
+number repeats it untill it changes., f 53;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 10 0;
+#X connect 10 0 16 0;
+#X connect 10 1 15 0;
+#X connect 11 0 2 0;
+#X connect 11 0 2 1;
+#X connect 11 1 12 0;
+#X connect 12 0 2 1;
+#X connect 15 0 22 1;
+#X connect 15 0 20 1;
+#X connect 15 0 26 1;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 17 1 22 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 19 1 26 0;
+#X connect 20 0 21 0;
+#X connect 21 0 24 0;
+#X connect 22 0 23 0;
+#X connect 23 0 25 0;
+#X connect 24 0 29 0;
+#X connect 25 0 29 0;
+#X connect 26 0 28 0;
+#X connect 27 0 29 0;
+#X connect 28 0 27 0;
+#X connect 29 0 11 0;

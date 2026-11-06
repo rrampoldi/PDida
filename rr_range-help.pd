@@ -1,0 +1,55 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_rrange 20 20 0 24 -128992
+-262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 234 rr_range, f 18;
+#X floatatom 181 131 5 0 0 1 min - -;
+#X floatatom 182 153 5 0 0 1 max - -;
+#X floatatom 182 175 5 0 0 1 max_interval - -;
+#X floatatom 182 197 5 0 0 1 repeat_every - -;
+#X floatatom 183 219 5 0 0 1 seed - -;
+#X obj 30 301 rr_allscales;
+#X msg 99 277 0 2 4 5 7 9 11;
+#X obj 29 387 rr_echo~ e1 500, f 19;
+#X obj 29 410 rr_echo~ e2 1000, f 17;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 308 157 Choose min and max range in between numbers can be
+generated. Define max_interval aceptable between them. Define after
+how many numbers generated sequence must repeats. Define a seed.;
+#X text 309 390 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence.;
+#X text 309 440 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 113 rr_density;
+#X text 309 279 Put in 2nd inlet a progressive series (list) of intervals
+which represents the elements of the scale to use (mod 12). [major
+scale in example];
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X obj 30 348 rr_tone~ 0 100 2;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X connect 2 0 13 0;
+#X connect 2 1 13 1;
+#X connect 3 0 9 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 2;
+#X connect 6 0 3 3;
+#X connect 7 0 3 4;
+#X connect 8 0 3 5;
+#X connect 9 0 22 0;
+#X connect 10 0 9 1;
+#X connect 11 0 12 0;
+#X connect 11 1 12 1;
+#X connect 11 1 2 1;
+#X connect 12 0 2 0;
+#X connect 12 1 2 0;
+#X connect 14 0 13 2;
+#X connect 19 0 3 0;
+#X connect 22 0 11 0;

@@ -1,0 +1,69 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_logica 20 20 0 24 -128992
+-262144 0;
+#X obj 29 422 rr_OUTdac~;
+#X obj 30 532 rr_record~;
+#X msg 193 506 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 335 272 Perc~ needs attributes: 1st for cloning \; 2nd for
+tone (in Hz) \; 3rd for release \; 4th for decay type \; 5th amp of
+tone (< 0.5) \; 6th amp of noise (< 0.5) \; 7th is lpf \; 8th is hpf.
+;
+#X obj 142 392 rev1~;
+#X floatatom 181 392 5 0 0 0 - - -;
+#X obj 75 383 *~ 0.5;
+#X floatatom 200 369 5 0 0 0 - - -;
+#X obj 30 383 *~ 0.5;
+#X obj 31 352 expr~ tanh($v1);
+#X obj 142 369 lop~ 200;
+#X obj 31 329 *~ 1;
+#X obj 50 263 rr_perc~ 0 250 90 3 0.4 0.2 1000 10;
+#X obj 69 288 rr_perc~ 0 1500 90 3 0.2 0.2 1000 10;
+#X obj 88 312 rr_perc~ 0 2500 90 3 0.2 0.2 2000 10;
+#X obj 31 197 rr_logica, f 10;
+#X obj 31 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X text 308 194 Logica needs two bangs (or values) in inlet and it
+returns bangs on 4 outlets in this order: if a=b \, if a<>b \, if a>b
+\, if b>a.;
+#X obj 31 107 rr_pulsa 5 1;
+#X obj 31 239 rr_perc~ 0 75 150 2 0.5 0.1 1000 10;
+#X obj 88 164 rr_trga 1 0 2 3;
+#X obj 31 140 rr_trga 1 0 1 2;
+#X obj 158 422 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 442 s sync;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 2 1;
+#X connect 9 0 8 1;
+#X connect 10 0 2 1;
+#X connect 11 0 14 1;
+#X connect 12 0 10 0;
+#X connect 12 0 2 0;
+#X connect 13 0 12 0;
+#X connect 13 0 14 0;
+#X connect 14 0 8 0;
+#X connect 15 0 13 0;
+#X connect 16 0 15 0;
+#X connect 17 0 15 0;
+#X connect 18 0 15 0;
+#X connect 19 0 24 0;
+#X connect 19 1 16 0;
+#X connect 19 2 17 0;
+#X connect 19 3 18 0;
+#X connect 20 0 23 0;
+#X connect 23 0 25 0;
+#X connect 23 0 26 0;
+#X connect 24 0 15 0;
+#X connect 25 0 19 1;
+#X connect 26 0 19 0;
+#X connect 27 0 28 0;

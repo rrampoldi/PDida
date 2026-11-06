@@ -1,0 +1,71 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_harris 20 20 0 24 -128992
+-262144 0;
+#X obj 29 460 rr_OUTdac~;
+#X obj 30 570 rr_record~;
+#X msg 193 544 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 564 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 93 rr_density;
+#X text 309 364 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X text 308 150 In circle: [div] how many bangs in to have a bang out
+(a counter) \; [int] defines interval to next number out \; [oct] in
+how many octaves can displaces \; [off] offset number (may be root
+of sequence] \; [set] reset. Es: have circle of fifth with 7 in int.
+2nd inlet is for [div] and 3rd for [int].;
+#X msg 30 337 next \$1;
+#X obj 78 158 rr_circle;
+#X obj 30 158 t b b;
+#X obj 141 437 *~ 0.25;
+#X obj 30 390 /~ 3;
+#X obj 30 415 rr_echo~ e1 500 0.5;
+#X obj 30 249 rr_harris;
+#X obj 126 226 random 12;
+#X obj 16 182 f 0;
+#X obj 41 182 + 1;
+#X obj 41 204 % 4;
+#X obj 16 226 sel 0;
+#X text 308 267 In harris put tone in 2nd inlet and random (0-16) for
+grade in 3rd inlet \; 4rt is for seed and change sequence and 5th for
+a bang that change harmony. [int] numberbox is for define intervals
+in notes chords. [M/m] for major or minor chord progression.;
+#X obj 30 359 clone 10 rr_tone~ 2000 2;
+#X obj 63 390 lop~ 1200;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 14 0;
+#X connect 12 0 25 0;
+#X connect 13 0 18 1;
+#X connect 14 0 20 0;
+#X connect 14 1 19 0;
+#X connect 14 1 13 0;
+#X connect 15 0 2 1;
+#X connect 16 0 26 0;
+#X connect 17 0 2 0;
+#X connect 17 0 2 1;
+#X connect 17 1 15 0;
+#X connect 18 0 12 0;
+#X connect 18 1 12 0;
+#X connect 18 2 12 0;
+#X connect 18 3 12 0;
+#X connect 18 4 12 0;
+#X connect 19 0 18 2;
+#X connect 20 0 21 0;
+#X connect 20 0 23 0;
+#X connect 21 0 22 0;
+#X connect 22 0 20 1;
+#X connect 23 0 18 0;
+#X connect 25 0 16 0;
+#X connect 26 0 17 0;

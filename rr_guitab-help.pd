@@ -1,0 +1,88 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_guitab 20 20 0 24 -128992
+-262144 0;
+#X text 309 490 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 29 466 rr_OUTdac~;
+#X obj 30 576 rr_record~;
+#X msg 193 550 rec01.wav;
+#X msg 30 329 next \$1;
+#X obj 158 468 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 488 s sync;
+#X obj 114 413 rev1~;
+#X floatatom 176 413 5 0 0 0 - - -;
+#X floatatom 176 390 5 0 0 0 - - -;
+#X floatatom 68 405 5 0 1 0 - - -;
+#X obj 29 428 mix 0.5;
+#X obj 30 373 *~ 0.25;
+#X obj 114 390 hip~ 1000;
+#X obj 30 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X floatatom 168 86 5 0 0 0 - - -;
+#X obj 30 351 clone 12 rr_tone~ 3000 3;
+#X obj 30 101 rr_pulsa+ 2 1 11;
+#X obj 30 144 rr_emerge+ 0;
+#X obj 30 167 % 4;
+#X obj 110 167 % 4;
+#X obj 142 191 % 4;
+#X obj 171 214 % 4;
+#X floatatom 30 306 5 0 0 0 - - -;
+#X obj 110 144 rr_emerge+ 1;
+#X obj 142 168 rr_emerge- 0;
+#X obj 171 191 rr_emerge- 1;
+#X floatatom 169 245 5 0 0 0 - - -;
+#X floatatom 169 268 5 0 0 0 - - -;
+#X obj 231 137 change -1;
+#X obj 30 208 rr_guitab 0 60;
+#X obj 231 229 rr_circula 8 7 12;
+#X obj 231 252 + 60;
+#X text 309 260 Guitab simulate a segment of guitarboard where build
+triad patterns (You must read from right to left). It needs 2 arguments
+\; 1st (0-3) on which line is tonic note \; 2nd tonic chord (as offset)
+\; A 0 to 3 value in 1 \, 2 \, 3 \, 4th inlets to change position in
+line. You can change arguments in 5th and 6th inlets.;
+#X connect 4 0 5 0;
+#X connect 4 1 5 1;
+#X connect 6 0 5 2;
+#X connect 7 0 19 0;
+#X connect 8 0 9 0;
+#X connect 10 0 14 1;
+#X connect 11 0 10 1;
+#X connect 12 0 16 1;
+#X connect 13 0 14 2;
+#X connect 14 0 4 0;
+#X connect 14 0 4 1;
+#X connect 15 0 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 10 0;
+#X connect 17 0 20 0;
+#X connect 18 0 20 1;
+#X connect 19 0 15 0;
+#X connect 20 0 21 0;
+#X connect 20 0 27 0;
+#X connect 20 0 28 0;
+#X connect 20 0 29 0;
+#X connect 20 1 32 0;
+#X connect 21 0 22 0;
+#X connect 22 0 33 0;
+#X connect 23 0 33 1;
+#X connect 24 0 33 2;
+#X connect 25 0 33 3;
+#X connect 26 0 7 0;
+#X connect 27 0 23 0;
+#X connect 28 0 24 0;
+#X connect 29 0 25 0;
+#X connect 30 0 33 4;
+#X connect 31 0 33 5;
+#X connect 32 0 34 0;
+#X connect 33 0 26 0;
+#X connect 33 1 26 0;
+#X connect 33 2 26 0;
+#X connect 33 3 26 0;
+#X connect 34 0 35 0;
+#X connect 35 0 31 0;

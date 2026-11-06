@@ -1,0 +1,56 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_vpat+vcircle 20 20 0
+24 -128992 -262144 0;
+#X text 309 490 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 29 446 rr_OUTdac~;
+#X obj 30 556 rr_record~;
+#X msg 193 530 rec01.wav;
+#X msg 30 309 next \$1;
+#X obj 158 448 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 468 s sync;
+#X obj 114 393 rev1~;
+#X floatatom 176 393 5 0 0 0 - - -;
+#X floatatom 176 370 5 0 0 0 - - -;
+#X floatatom 68 385 5 0 1 0 - - -;
+#X obj 29 408 mix 0.5;
+#X obj 30 353 *~ 0.25;
+#X obj 114 370 hip~ 1000;
+#X obj 30 81 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X floatatom 30 286 5 0 0 0 - - -;
+#X obj 90 151 rr_vpat;
+#X obj 30 331 clone 12 rr_tone~ 1000 3;
+#X obj 30 101 rr_pulsa 4 1;
+#X obj 30 263 + 60;
+#X obj 30 124 rr_summa 2 3;
+#X text 309 330 Vpat returns visual pattern.;
+#X obj 327 140 rr_vcircle;
+#X text 419 207 Vcircle returns visual circle of fifths.;
+#X connect 4 0 5 0;
+#X connect 4 1 5 1;
+#X connect 6 0 5 2;
+#X connect 7 0 20 0;
+#X connect 8 0 9 0;
+#X connect 10 0 14 1;
+#X connect 11 0 10 1;
+#X connect 12 0 16 1;
+#X connect 13 0 14 2;
+#X connect 14 0 4 0;
+#X connect 14 0 4 1;
+#X connect 15 0 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 10 0;
+#X connect 17 0 21 0;
+#X connect 18 0 7 0;
+#X connect 20 0 15 0;
+#X connect 21 0 23 0;
+#X connect 22 0 18 0;
+#X connect 23 0 19 0;
+#X connect 23 0 22 0;
+#X connect 23 0 25 0;

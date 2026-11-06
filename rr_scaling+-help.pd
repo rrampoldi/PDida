@@ -1,0 +1,62 @@
+#N canvas 593 116 767 637 10;
+#X declare -path ../abs/rr_Libs;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_scaling+ 20 20 0 24
+-128992 -262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 29 79 declare -path ../abs/rr_Libs;
+#X msg 119 266 0 2 3 5 7 9 10;
+#X text 309 309 In allscales put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X obj 79 383 lop~ 600;
+#X obj 79 406 rev1~;
+#X floatatom 117 406 5 0 0 0 - - -;
+#X msg 30 305 next \$1;
+#X obj 30 353 *~ 0.25;
+#X floatatom 43 110 5 0 0 0 - - -;
+#X obj 43 132 osc~;
+#X floatatom 76 133 5 0 0 0 - - -;
+#X obj 24 201 del 0;
+#X obj 43 155 snapshot~;
+#X obj 43 178 t b f f, f 9;
+#X obj 24 156 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 30 330 clone 4 rr_tone~ 2000 3;
+#X obj 30 239 rr_scaling+ 20 30;
+#X text 308 108 Bang to start \;;
+#X text 308 238 Scaling+ need 2 arguments (inlet values 0-1): 1st scaling
+value range \; 2nd offset value.;
+#X obj 66 201 rr_scaling+ 1000 250;
+#X obj 30 282 rr_allscales;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 8 0 27 1;
+#X connect 10 0 11 0;
+#X connect 11 0 2 0;
+#X connect 11 0 2 1;
+#X connect 12 0 11 1;
+#X connect 13 0 22 0;
+#X connect 14 0 2 0;
+#X connect 14 0 10 0;
+#X connect 15 0 16 0;
+#X connect 16 0 19 0;
+#X connect 17 0 16 1;
+#X connect 18 0 21 0;
+#X connect 19 0 20 0;
+#X connect 20 0 18 0;
+#X connect 20 1 26 0;
+#X connect 20 2 23 0;
+#X connect 21 0 19 0;
+#X connect 22 0 14 0;
+#X connect 23 0 27 0;
+#X connect 26 0 18 1;
+#X connect 27 0 13 0;

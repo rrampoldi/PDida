@@ -1,0 +1,53 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_tone 20 20 0 24 -128992
+-262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 343 rr_allscales;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 113 rr_density;
+#X text 309 364 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X msg 99 321 0 2 3 5 7 9 10;
+#X text 309 315 Put in 2nd inlet a progressive series (list) of intervals
+which represents the elements of the scale to use (mod 12). [minor
+scale in example];
+#X obj 30 180 rr_play;
+#X obj 30 400 rr_echo~ e1 500 0.5;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X obj 30 367 rr_tone~ 0 2000 3;
+#X obj 88 246 rr_circle;
+#X obj 30 304 + 0;
+#X text 308 210 In circle: [div] how many bangs in to have a bang out
+(a counter) \; [int] defines interval to next number out \; [oct] in
+how many octaves can displaces \; [off] offset number (may be root
+of sequence] \; [set] reset. Es: have circle of fifth with 7 in int.
+2nd inlet is for [div] and 3rd for [int].;
+#X text 308 154 Choose how many elements in your sequence [num] then
+[set].You can click [set] again for a new sequence. You can bang in
+2nd inlet to [set]. 3rd inlet (2-6) how many repetitions of sequence
+to bang out in 2nd outlet.;
+#X connect 2 0 4 0;
+#X connect 2 1 4 1;
+#X connect 3 0 16 0;
+#X connect 5 0 4 2;
+#X connect 8 0 13 0;
+#X connect 11 0 3 1;
+#X connect 13 0 18 0;
+#X connect 13 1 17 0;
+#X connect 14 0 2 0;
+#X connect 14 1 2 1;
+#X connect 16 0 14 0;
+#X connect 17 0 18 1;
+#X connect 18 0 3 0;

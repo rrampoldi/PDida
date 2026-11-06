@@ -1,0 +1,46 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_linear 20 20 0 24 -128992
+-262144 0;
+#X obj 29 445 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 481 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 375 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X obj 30 102 rr_density;
+#X obj 30 420 rr_echo~ e2 500 0.2;
+#X obj 30 398 rr_echo~ e1 50 0.05, f 21;
+#X text 309 421 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence.Duration
+< 50ms may be a simple reverber. You can put 3rd attribute from 0-1
+for feedback.;
+#X obj 30 167 rr_trg;
+#X obj 30 232 rr_linear;
+#X obj 30 376 rr_tone~ 0 250 3;
+#X text 308 144 In trg: [div] how many bangs in to have a bang out
+(a counter) \; [off] on which bang of [len] it begins \; [hit] how
+many bangs is divided [len] (hit<len) \; [len] how long your sequence
+before restart.;
+#X text 309 229 In linear: put in 2nd inlet your root. [iter] how many
+elements in your sequence \; [range] how much up or down from root
+\; [off] offset is root \; Choose a linear distribution and visualize
+on array \, click again to set a new one.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 9 0 13 0;
+#X connect 10 0 2 0;
+#X connect 10 1 2 1;
+#X connect 11 0 10 0;
+#X connect 11 1 2 1;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 11 0;

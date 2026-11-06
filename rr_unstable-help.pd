@@ -1,0 +1,58 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_unstable 20 20 0 24
+-128992 -262144 0;
+#X obj 29 448 rr_OUTdac~;
+#X obj 30 558 rr_record~;
+#X msg 193 532 rec01.wav;
+#X text 309 510 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset., f 56;
+#X obj 30 103 rr_density;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 460 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X obj 30 168 t b b;
+#X obj 141 424 *~ 0.25;
+#X text 308 130 Cycle1 (as circle) needs five arguments: 1st for clone
+\; 2nd is for how many bangs in to have a bang out (a counter) \; 3rd
+is for interval to repeat on every cycle \; 4rt in how many octaves
+\; 5th is root tone to begin.;
+#X text 308 215 Polyri needs two arguments (better not two odds numbers).
+It bangs out results of mix., f 58;
+#X obj 30 221 rr_polyri 2 3;
+#X obj 30 378 /~ 3;
+#X obj 30 250 rr_unstable;
+#X msg 30 330 next \$1;
+#X obj 61 304 + 12;
+#X obj 30 353 clone 6 rr_tone~ 1500 2;
+#X obj 30 401 rr_echo~ e1 50 0.15;
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 309 254 Unstable returns a triad unstable and try to resolve
+it every bang in 1st inlet. 2nd inlet is for root tone.;
+#X obj 93 184 rr_cycle1 0 16 5 1 55;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 10 0;
+#X connect 10 0 14 0;
+#X connect 10 1 23 0;
+#X connect 11 0 2 1;
+#X connect 14 0 16 0;
+#X connect 15 0 20 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 16 2 17 0;
+#X connect 17 0 19 0;
+#X connect 18 0 17 0;
+#X connect 19 0 15 0;
+#X connect 20 0 2 0;
+#X connect 20 0 2 1;
+#X connect 20 1 11 0;
+#X connect 23 0 16 1;

@@ -1,0 +1,78 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_replica 20 20 0 24 -128992
+-262144 0;
+#X obj 29 440 rr_OUTdac~;
+#X obj 30 550 rr_record~;
+#X msg 193 524 rec01.wav;
+#X text 309 540 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 580 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset., f 56;
+#X obj 30 77 rr_density;
+#X text 308 76 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 485 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X obj 141 415 *~ 0.25;
+#X obj 30 370 /~ 3;
+#X msg 30 322 next \$1;
+#X text 309 358 With fm you can generate a frequency modulated sound
+\; 1st is carrier (0-127) \; 2nd is ratio for modulator (0-10) \; 3rd
+modulation index (0-20) \; 4th timbre (0-1) \; 5th mix (0-1) \; 6th
+attack in ms \; 7th release in ms \; 8th decay (1-8)., f 58;
+#X obj 30 142 t b b, f 18;
+#X obj 30 299 rr_allscales;
+#X obj 152 78 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 152 98 s sync;
+#X msg 145 283 0 2 4 5 7 9 10;
+#X text 308 110 Trga (trg arguments version) needs four arguments:
+1st is division of inlet bangs \; 2nd is offset \; 3rd how many hits
+\; 4rt is total length of sequence to divide in hits.;
+#X obj 30 242 rr_replica 6;
+#X obj 30 174 rr_play;
+#X obj 30 274 + 30;
+#X obj 116 258 - 5;
+#X obj 151 158 rr_trga 10 0 1 2;
+#X obj 135 195 rr_trga 15 0 1 1;
+#X text 309 307 In allscales: put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12).;
+#X text 308 184 in Play choose how many elements in your sequence [num]
+then [set].You can click [set] again for a new sequence. You can bang
+in 2nd inlet to [set]. 3rd inlet (2-6) how many repetitions of sequence
+to bang out in 2nd outlet.;
+#X text 309 245 Replica needs an argument \; each bang in 2nd inlet
+it copies num of elements in argument from sequence in 1st inlet and
+repeats untill new bang occures. 1st outlet returns original inlet
+\, 2nd returns sequence copied.;
+#X obj 30 346 clone 16 rr_fm~ 1 0.5 0.5 0.95 5 2000 3;
+#X obj 30 393 rr_echo~ e1 500 0.5;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 14 0;
+#X connect 10 0 2 1;
+#X connect 10 0 2 0;
+#X connect 11 0 30 0;
+#X connect 12 0 29 0;
+#X connect 14 0 21 0;
+#X connect 14 1 24 0;
+#X connect 14 1 25 0;
+#X connect 15 0 12 0;
+#X connect 16 0 17 0;
+#X connect 18 0 15 1;
+#X connect 20 0 22 0;
+#X connect 20 1 23 0;
+#X connect 21 0 20 0;
+#X connect 22 0 15 0;
+#X connect 23 0 22 0;
+#X connect 24 0 21 1;
+#X connect 25 0 20 1;
+#X connect 29 0 11 0;
+#X connect 30 0 2 0;
+#X connect 30 0 2 1;
+#X connect 30 1 10 0;

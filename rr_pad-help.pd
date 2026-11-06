@@ -1,0 +1,68 @@
+#N canvas 530 116 737 632 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_pad 20 20 0 24 -128992
+-262144 0;
+#X text 309 485 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 308 94 HOW TO: Use pulsa to define how much times in seconds
+you choose bang occures.;
+#X text 308 364 Tremo needs 2 arguments: 1st is freq of tremolo \;
+2nd is amplitude.;
+#X obj 29 437 rr_OUTdac~;
+#X obj 30 547 rr_record~;
+#X msg 193 521 rec01.wav;
+#X obj 30 96 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 141 410 rev1~;
+#X floatatom 180 410 5 0 0 0 - - -;
+#X obj 30 308 *~ 0.5;
+#X obj 127 333 *~ 0.5;
+#X msg 30 237 next \$1;
+#X obj 226 355 *~ 0.5;
+#X obj 30 215 rr_allscales;
+#X obj 30 116 rr_pulsa 1 1;
+#X msg 114 215 0 2 4 7 9;
+#X obj 30 169 random 8;
+#X obj 30 372 *~ 1;
+#X obj 30 263 clone 4 rr_pad~ 50 5 5 50 2000;
+#X obj 128 309 rr_tremo~ 8 0.9;
+#X obj 30 286 rr_tremo~ 1 0.8;
+#X obj 226 332 rr_tremo~ 5 0.75;
+#X obj 141 387 lop~ 1200;
+#X obj 226 309 clone 4 rr_pad~ 5 1 10 500 3000;
+#X obj 128 286 clone 4 rr_pad~ 80 2.5 10 200 2500;
+#X obj 30 192 + 20;
+#X text 308 170 Pad needs 6 arguments: 1st for cloning \; 2nd is range
+for detune (< 100) \; 3rd is range for amount (< 10) \; 4th is range
+for timbre (< 100) \; 5th is attack \; 6th is sustain.;
+#X connect 6 0 7 0;
+#X connect 6 1 7 1;
+#X connect 8 0 7 2;
+#X connect 9 0 17 0;
+#X connect 10 0 6 1;
+#X connect 10 0 6 0;
+#X connect 11 0 10 1;
+#X connect 12 0 20 0;
+#X connect 13 0 20 0;
+#X connect 14 0 21 0;
+#X connect 14 0 26 0;
+#X connect 14 0 27 0;
+#X connect 15 0 20 0;
+#X connect 16 0 14 0;
+#X connect 17 0 19 0;
+#X connect 18 0 16 1;
+#X connect 19 0 28 0;
+#X connect 20 0 6 0;
+#X connect 20 0 6 1;
+#X connect 20 0 25 0;
+#X connect 21 0 23 0;
+#X connect 22 0 13 0;
+#X connect 23 0 12 0;
+#X connect 24 0 15 0;
+#X connect 25 0 10 0;
+#X connect 26 0 24 0;
+#X connect 27 0 22 0;
+#X connect 28 0 16 0;

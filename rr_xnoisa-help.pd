@@ -1,0 +1,65 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_xnoisa 20 20 0 24 -128992
+-262144 0;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X text 309 248 In allscales put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X obj 29 416 rr_OUTdac~;
+#X obj 30 526 rr_record~;
+#X msg 193 500 rec01.wav;
+#X msg 30 279 next \$1;
+#X obj 30 256 rr_allscales;
+#X obj 158 418 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 438 s sync;
+#X obj 114 363 rev1~;
+#X floatatom 176 363 5 0 0 0 - - -;
+#X floatatom 176 340 5 0 0 0 - - -;
+#X floatatom 68 355 5 0 1 0 - - -;
+#X obj 29 378 mix 0.5;
+#X obj 114 340 hip~ 1000;
+#X msg 99 233 0 1 5 7 10 12;
+#X floatatom 30 103 5 0 0 0 - - -;
+#X floatatom 91 103 5 0 0 0 - - -;
+#X floatatom 153 103 5 0 0 0 - - -;
+#X floatatom 30 233 5 0 0 0 - - -;
+#X obj 30 128 rr_xnoisa 30 10 12 50;
+#X text 309 306 With plucked you can simulated plucked string sound
+\; 1st 0 o number when use clone \; 2nd resonance (< 0.99) \; 3rd cutoff
+freq for low in tone (< 6000) \; 4th cutoff freq for high in tone (<
+5000) \; 5th cutoff freq for low in noise (< 6000) \; 6th cutoff freq
+for high in noise (< 5000) \; 7th type of curve (1-8).;
+#X obj 30 323 *~ 1;
+#X text 309 128 Xnoisa needs 4 arguments: 1st is offset \; 2nd is carrier
+freq in Hz (1st inlet too) \; 3rd is modulation freq in Hz (2nd inlet)
+\; 4th is low pass filter in Hz (3rd inlet). 1st outlet (0-127) and
+a bang in 2nd outlet.;
+#X obj 30 301 clone 8 rr_plucked~ 0.995 6000 60 1500 500;
+#X connect 5 0 6 0;
+#X connect 5 1 6 1;
+#X connect 7 0 6 2;
+#X connect 8 0 27 0;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 12 0 16 1;
+#X connect 13 0 12 1;
+#X connect 14 0 17 1;
+#X connect 15 0 16 2;
+#X connect 16 0 5 0;
+#X connect 16 0 5 1;
+#X connect 17 0 12 0;
+#X connect 18 0 9 1;
+#X connect 19 0 23 0;
+#X connect 20 0 23 1;
+#X connect 21 0 23 2;
+#X connect 22 0 9 0;
+#X connect 23 0 22 0;
+#X connect 25 0 16 0;
+#X connect 25 0 17 0;
+#X connect 27 0 25 0;

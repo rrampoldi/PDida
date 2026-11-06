@@ -1,0 +1,78 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_sequenze 20 20 0 24
+-128992 -262144 0;
+#X obj 29 428 rr_OUTdac~;
+#X obj 30 538 rr_record~;
+#X msg 193 512 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 97 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 85 402 rev1~;
+#X floatatom 123 402 5 0 0 0 - - -;
+#X msg 30 313 next \$1;
+#X obj 158 430 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 450 s sync;
+#X obj 30 362 *~ 0.15;
+#X text 308 288 Mappa+ needs 4 arguments \; 1st are numbers of steps
+in scale \; 2nd are numbers of semitones in scale \; 3rd is modal transposition
+(scale grade) \; 4th is chromtic transposition.;
+#X floatatom 183 105 5 0 0 0 - - -;
+#X obj 30 289 rr_mappa+ 7 12 -1 2;
+#X obj 30 120 rr_atempo 90 3 4 12 65;
+#X obj 30 201 rr_sequenze 12 15, f 26;
+#X obj 85 379 hip~ 500;
+#X obj 94 145 change -1;
+#X obj 68 226 - 14;
+#X obj 30 337 clone 16 rr_tone~ 1500 3;
+#X obj 106 228 - 1;
+#X obj 91 172 rr_subdiv;
+#X obj 198 159 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 144 232 + 2;
+#X obj 183 236 + 7;
+#X text 308 168 Sequenze needs 2 arguments and a seed in last inlet
+\; 1st is sequence length \; 2nd is sequence range \; It produce a
+sequence (new seed = new sequence) \, then splits it \, transforms
+it or shuffles it. Bangs in 2nd \, 3rd \, 4th and 5th inlets produce
+an output in 2nd \, 3rd \, 4th \, 5th outlets.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 17 0;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;
+#X connect 9 0 8 1;
+#X connect 10 0 22 0;
+#X connect 11 0 12 0;
+#X connect 13 0 2 0;
+#X connect 13 0 8 0;
+#X connect 13 0 19 0;
+#X connect 15 0 17 1;
+#X connect 15 0 18 5;
+#X connect 15 0 24 2;
+#X connect 16 0 10 0;
+#X connect 17 0 18 0;
+#X connect 17 1 20 0;
+#X connect 17 2 18 4;
+#X connect 18 0 16 0;
+#X connect 18 1 21 0;
+#X connect 18 2 23 0;
+#X connect 18 3 26 0;
+#X connect 18 4 27 0;
+#X connect 19 0 8 0;
+#X connect 20 0 18 1;
+#X connect 20 0 24 0;
+#X connect 21 0 16 0;
+#X connect 22 0 13 0;
+#X connect 23 0 16 0;
+#X connect 24 0 18 2;
+#X connect 24 1 18 3;
+#X connect 25 0 24 1;
+#X connect 26 0 16 0;
+#X connect 27 0 16 0;

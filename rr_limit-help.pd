@@ -1,0 +1,74 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_limit 20 20 0 24 -128992
+-262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 113 rr_density;
+#X text 309 344 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X msg 30 323 next \$1;
+#X obj 30 368 /~ 4;
+#X obj 30 391 rr_echo~ e1 500 0.15;
+#X obj 141 418 *~ 0.25;
+#X text 309 254 Cycle1 (as circle) needs five arguments: 1st for clone
+\; 2nd is for how many bangs in to have a bang out (a counter) \; 3rd
+is for interval to repeat on every cycle \; 4rt in how many octaves
+\; 5th is root tone to begin.;
+#X text 308 146 Polyri needs two arguments (better not two odds numbers).
+It bangs out results of mix., f 58;
+#X obj 30 299 + 55;
+#X obj 30 216 rr_limit 0 -4 12 7;
+#X floatatom 135 194 5 0 0 0 - - -;
+#X obj 135 239 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 30 345 clone 8 rr_tone~ 1500 3;
+#X obj 30 183 rr_polyri 2 5;
+#X obj 135 259 t b b b;
+#X obj 152 114 t b b, f 6;
+#X msg 152 160 0;
+#X msg 185 160 1;
+#X obj 185 137 del 3000;
+#X text 308 186 Limit needs four arguments: 1st is where melody begins
+\; 2nd is lower limit \; 3rd is higher limit \; 4rt is where it stops.
+2nd inlet is for seed and 2nd outlet send a bang where sequence ends.
+;
+#X obj 135 283 rr_cycle1 0 1 7 1 55;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 22 0;
+#X connect 11 0 21 0;
+#X connect 12 0 13 0;
+#X connect 13 0 2 0;
+#X connect 13 0 2 1;
+#X connect 13 1 14 0;
+#X connect 14 0 2 1;
+#X connect 17 0 11 0;
+#X connect 18 0 17 0;
+#X connect 18 1 20 0;
+#X connect 19 0 18 1;
+#X connect 20 0 23 0;
+#X connect 21 0 12 0;
+#X connect 22 0 18 0;
+#X connect 23 0 29 0;
+#X connect 23 1 19 0;
+#X connect 23 2 24 0;
+#X connect 24 0 25 0;
+#X connect 24 1 27 0;
+#X connect 25 0 7 0;
+#X connect 26 0 7 0;
+#X connect 27 0 26 0;
+#X connect 29 0 17 1;

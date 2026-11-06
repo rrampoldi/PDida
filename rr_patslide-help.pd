@@ -1,0 +1,59 @@
+#N canvas 539 116 736 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_patslide 20 20 0 24
+-128992 -262144 0;
+#X obj 29 442 rr_OUTdac~;
+#X obj 30 552 rr_record~;
+#X msg 193 526 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 113 rr_density;
+#X text 308 94 HOW TO: Use density to define how much times in seconds
+you choose bang occures.;
+#X text 309 410 Echo~ repeats sound (e1 \, e2 \, ...) every ms you
+put as parameter and fade out. You can put multiples in sequence. You
+can put 3rd attribute from 0-1 for feedback.;
+#X msg 30 343 next \$1;
+#X obj 30 320 allscales;
+#X text 309 304 In allscales: put in 2nd inlet a progressive series
+(list) of intervals which represents the elements of the scale to use
+(mod 12). [minor scale in example];
+#X text 309 364 Tone~ generate a tone with envelope: Midi value (0-127)
+in 1st inlet \, duration in ms 2nd inlet \, power for asc/desc (1-8)
+in 3rd inlet.;
+#X obj 142 413 *~ 0.15;
+#X obj 30 367 clone rr_tone~ 9 750 3;
+#X obj 30 391 rr_echo~ e1 500 0.5;
+#X msg 115 304 0 2 3 5 7 9 10;
+#X obj 30 297 + 35;
+#X floatatom 59 190 5 0 0 0 - - -;
+#X floatatom 88 213 5 0 0 0 - - -;
+#X floatatom 117 189 5 0 0 0 - - -;
+#X floatatom 147 212 5 0 0 0 - - -;
+#X obj 30 240 rr_patslide 18 3 2 1;
+#X text 309 184 Patslide needs 4 arguments (you can put them in 4 inlets
+too): 1st is how many tones in sequence \; 2nd is how many tones for
+groups that divides sequence \; 3rd is where next group starts \; 4th
+is interval in tones sequence.;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 23 0;
+#X connect 10 0 15 0;
+#X connect 11 0 10 0;
+#X connect 14 0 2 1;
+#X connect 14 0 2 0;
+#X connect 15 0 16 0;
+#X connect 16 0 2 0;
+#X connect 16 0 2 1;
+#X connect 16 1 14 0;
+#X connect 17 0 11 1;
+#X connect 18 0 11 0;
+#X connect 19 0 23 1;
+#X connect 20 0 23 2;
+#X connect 21 0 23 3;
+#X connect 22 0 23 4;
+#X connect 23 0 18 0;

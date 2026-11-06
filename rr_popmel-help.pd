@@ -1,0 +1,64 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_popmel 20 20 0 24 -128992
+-262144 0;
+#X obj 29 415 rr_OUTdac~;
+#X obj 30 525 rr_record~;
+#X msg 193 499 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 84 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 85 389 rev1~;
+#X floatatom 123 389 5 0 0 0 - - -;
+#X msg 30 300 next \$1;
+#X obj 158 417 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 437 s sync;
+#X obj 30 349 *~ 0.15;
+#X text 308 288 Mappa+ needs 4 arguments \; 1st are numbers of steps
+in scale \; 2nd are numbers of semitones in scale \; 3rd is modal transposition
+(scale grade) \; 4th is chromtic transposition.;
+#X floatatom 231 92 5 0 0 0 - - -;
+#X obj 30 107 rr_atempo 90 3 4 12 65;
+#X obj 85 366 hip~ 500;
+#X obj 248 121 s at_cycle;
+#X obj 195 123 sel 1;
+#X obj 30 205 rr_popmel, f 22;
+#X floatatom 159 182 5 0 0 0 - - -;
+#X obj 159 229 - 7;
+#X text 308 201 Popmel needs a value (0-1) in 2ns inlet. It returns
+a melody line with tone chord on downbeat (1) of rythm.;
+#X obj 195 146 rr_circula 4 7 12;
+#X obj 30 276 rr_mappa+ 7 12 -1 0, f 28;
+#X obj 30 324 clone 16 rr_tone~ 2000 3;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 16 0;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;
+#X connect 9 0 8 1;
+#X connect 10 0 26 0;
+#X connect 11 0 12 0;
+#X connect 13 0 2 0;
+#X connect 13 0 8 0;
+#X connect 13 0 17 0;
+#X connect 15 0 16 1;
+#X connect 15 0 18 0;
+#X connect 16 0 20 0;
+#X connect 16 2 21 0;
+#X connect 16 2 19 0;
+#X connect 17 0 8 0;
+#X connect 19 0 24 0;
+#X connect 20 0 25 0;
+#X connect 20 1 22 0;
+#X connect 21 0 20 1;
+#X connect 22 0 25 0;
+#X connect 24 0 15 0;
+#X connect 24 0 25 4;
+#X connect 25 0 10 0;
+#X connect 26 0 13 0;

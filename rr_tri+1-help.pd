@@ -1,0 +1,58 @@
+#N canvas 593 116 767 637 10;
+#X obj 8 17 cnv 15 680 40 empty empty Generative_series 20 12 0 14
+-233017 -66577 0;
+#X obj 303 21 cnv 15 380 40 empty empty ABS:rr_tri+1 20 20 0 24 -128992
+-262144 0;
+#X obj 29 428 rr_OUTdac~;
+#X obj 30 538 rr_record~;
+#X msg 193 512 rec01.wav;
+#X text 309 460 1st toggle turn ON/OFF your Dsp. 2nd toggle visualize
+the wave sound. Slide is for volume.;
+#X text 309 550 You can record your performance. Put the name. It show
+passing seconds while recording. Bang to reset.;
+#X obj 30 86 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 85 402 rev1~;
+#X floatatom 123 402 5 0 0 0 - - -;
+#X msg 30 313 next \$1;
+#X obj 158 430 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 158 450 s sync;
+#X obj 30 362 *~ 0.15;
+#X obj 85 379 hip~ 300;
+#X obj 30 120 rr_pulsa+ 1 3 5;
+#X obj 30 194 rr_tri+1;
+#X obj 30 337 clone 16 rr_tone~ 500 4;
+#X text 308 198 Tri+1 needs a a bang in 1st inlet and value as seed
+in 2nd inlet. It returns thriads + 1 tone.;
+#X text 308 94 Pulsa+ needs 3 arguments: 1st how many sec for pulse
+duration \; 2nd how many subdivision in pulse \; 3rd how many beats
+to repeat durations sequence. Put a value in 2nd inlet to generate
+new sequence. 1st outlet for bangs series and 2nd outlet for duration
+of every beat.;
+#X text 308 268 Mappa+ needs 4 arguments \; 1st are numbers of steps
+in scale \; 2nd are numbers of semitones in scale \; 3rd is modal transposition
+(scale grade) \; 4th is chromtic transposition.;
+#X obj 141 120 rr_circula 4 7 12;
+#X obj 30 289 rr_mappa+ 7 12 12 2;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 4 0 3 2;
+#X connect 7 0 15 0;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;
+#X connect 9 0 8 1;
+#X connect 10 0 17 0;
+#X connect 11 0 12 0;
+#X connect 13 0 2 0;
+#X connect 13 0 8 0;
+#X connect 13 0 14 0;
+#X connect 14 0 8 0;
+#X connect 15 0 16 0;
+#X connect 15 1 21 0;
+#X connect 16 0 22 0;
+#X connect 17 0 13 0;
+#X connect 21 0 15 1;
+#X connect 21 0 16 1;
+#X connect 21 0 22 4;
+#X connect 22 0 10 0;
